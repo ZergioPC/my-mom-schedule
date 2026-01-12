@@ -7,10 +7,10 @@ function Header({ rutas }){
       <span>Organizador</span>
       <nav>
         <ul>
-          {rutas.map( ruta => (
-            <li>
+          {rutas.map( (ruta,i) => (
+            <li key={i}>
               <NavLink to={ruta.to}>{ruta.text}</NavLink>
-              </li>
+            </li>
           ))}
         </ul>
       </nav>

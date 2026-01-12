@@ -13,7 +13,15 @@
 .matriz-title-3 { grid-row: 2/3; grid-column: 1/2; }
 .matriz-title-4 { grid-row: 3/4; grid-column: 1/2; }
 
-.matriz-sec {
+.matriz-title-3, .matriz-title-4 {
+  text-orientation: mixed; 
+  writing-mode: vertical-lr; 
+  transform: rotateZ(180deg);
+}
+
+.matriz-sec > ul{
+  width: 100%;
+  height: 100%;
   background-color: blueviolet;
 }
 

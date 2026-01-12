@@ -1,22 +1,28 @@
 import './App.css'
 
+import { useState } from 'react';
 import { HashRouter, Routes, Route } from 'react-router-dom'
 
 import { Header } from '../Components/Header';
 import { Home } from '../Pages/Home';
 import { Matriz } from '../Pages/Matriz';
 import { PlanSemanal } from '../Pages/PlanSemanal';
+import { Cronograma } from '../Pages/Cronograma';
 
+import useMatrizCtx from '../Hooks/useMatrizCtx';
 
 const rutas = [
   {to: "/", text: "Home"},
   {to: "/matriz", text: "Matriz"},
-  {to: "/plan-semana", text: "Planeador Semanal"},
+  {to: "/semana", text: "Planeador Semanal"},
+  {to: "/cronograma", text: "Cronograma"},
 ];
 
-// Agregar Horario
+//Agregar Horario
 
 function App() {
+  const { matriz } = useMatrizCtx();
+
   return (
     <HashRouter>
       <Header rutas={rutas} />
@@ -24,10 +30,11 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path='/matriz' element={<Matriz />} />
-        <Route path='/plan-semana' element={<PlanSemanal />} />
+        <Route path='/semana' element={<PlanSemanal />} />
+        <Route path='/cronograma' element={<Cronograma />} />
       </Routes>
     </HashRouter>
   )
 }
 
-export default App
+export default App;
