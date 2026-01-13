@@ -1,0 +1,7 @@
+.ItemsItem {
+  display: flex;
+}
+
+.ItemsItem-idle { background-color: aqua;}
+.ItemsItem-edit { background-color: grey;}
+.ItemsItem-complete { background-color: greenyellow;}

@@ -23,7 +23,6 @@ export default function useMatrizCtx(initCtx) {
       ...matriz,
       urgente: matriz.urgente.filter(item => item.id !== itemId)
     });
-    console.log(matriz.urgente);
   }
 
   const addNoUrgencia = (item) => {
