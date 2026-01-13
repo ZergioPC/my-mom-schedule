@@ -1,6 +1,6 @@
 import React from "react";
 
-function DraggableItem({ item, quadrant, onDragStart, showDelete, onDelete }) {
+function MatrixItem({ item, quadrant, onDragStart, showDelete, onDelete }) {
   return (
     <li
       draggable
@@ -18,4 +18,4 @@ function DraggableItem({ item, quadrant, onDragStart, showDelete, onDelete }) {
   );
 }
 
-export { DraggableItem };
+export { MatrixItem };
