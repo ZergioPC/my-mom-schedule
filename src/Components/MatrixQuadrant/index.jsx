@@ -7,6 +7,7 @@ function MatrixQuadrant({
   onDragStart, 
   onDrop, 
   onDragOver,
+  onDelete,
   className
 }) {
   return (
@@ -22,7 +23,7 @@ function MatrixQuadrant({
             item={item}
             quadrant={quadrant}
             onDragStart={onDragStart}
-            showDelete={false}
+            onDelete={onDelete}
           />
         ))}
       </ul>

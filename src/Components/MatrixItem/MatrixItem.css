@@ -1,0 +1,4 @@
+.MatrixItem {
+  list-style: none;
+  display: flex;
+}

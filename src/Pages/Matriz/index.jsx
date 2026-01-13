@@ -2,50 +2,27 @@ import "./Matriz.css";
 
 import { useState } from "react";
 
-import { DraggableList } from "../../Components/DraggableList";
-import { DraggableItem } from "../../Components/DraggableItem";
+import { MatrixQuadrant } from "../../Components/MatrixQuadrant";
+import { MatrixItem } from "../../Components/MatrixItem";
 
 import useMatrizCtx from "../../Hooks/useMatrizCtx";
 
-const AUXTASK = [
-  {id:1, txt: "prueba 1"},
-  {id:2, txt: "prueba 2"},
-  {id:3, txt: "prueba 3"},
-]
+// const AUXTASK = [
+//   {id:1, txt: "prueba 1"},
+//   {id:2, txt: "prueba 2"},
+//   {id:3, txt: "prueba 3"},
+// ]
 
-function MatrixQuadrant({ 
-  items, 
-  quadrant, 
-  onDragStart, 
-  onDrop, 
-  onDragOver,
-  className
-}) {
-  return (
-    <section
-      onDrop={(e) => onDrop(e, quadrant)}
-      onDragOver={onDragOver}
-      className={className + " matriz-sec"}
-    >
-      <ul>
-        {items.map((item, idx) => (
-          <DraggableItem
-            key={idx}
-            item={item}
-            quadrant={quadrant}
-            onDragStart={onDragStart}
-            showDelete={false}
-          />
-        ))}
-      </ul>
-    </section>
-  );
-}
+const AUXTASK = []
 
 function Matriz(){
   const {
     matriz,
     moveItem,
+    rmUrgencia,
+    rmNoUrgencia,
+    rmImportant,
+    rmNoImportant,
     addToQuadrant,
   } = useMatrizCtx();
 
@@ -100,12 +77,10 @@ function Matriz(){
   };
 
   return (
-    <div>
-      <h1>
-        Matriz Eisenhower
-      </h1>
-      
-      <main>
+    <div className="Matriz">
+      <main className="Matriz-main">
+        <h1>Matriz Eisenhower</h1>
+
         <section className="matriz-table">
           <h2 
             className="matriz-title matriz-title-1"
@@ -116,6 +91,7 @@ function Matriz(){
             onDragStart={handleDragStart}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
+            onDelete={rmUrgencia}
             className={"matriz-sec-1"}
           />
 
@@ -128,6 +104,7 @@ function Matriz(){
             onDragStart={handleDragStart}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
+            onDelete={rmNoUrgencia}
             className={"matriz-sec-2"}
           />
 
@@ -140,6 +117,7 @@ function Matriz(){
             onDragStart={handleDragStart}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
+            onDelete={rmImportant}
             className={"matriz-sec-3"}
           />
 
@@ -152,12 +130,13 @@ function Matriz(){
             onDragStart={handleDragStart}
             onDrop={handleDrop}
             onDragOver={handleDragOver}
+            onDelete={rmNoImportant}
             className={"matriz-sec-4"}
           />
         </section>
       </main>
 
-      <aside>
+      <aside className="Matriz-aside">
         <h2>Agregar Items</h2>
         
         <form onSubmit={handleCreateItem}>
@@ -167,16 +146,15 @@ function Matriz(){
             onChange={(e) => setNewItemText(e.target.value)}
             placeholder="Escribe la tarea..."
           />
-          <button type="submit">Add Item</button>
+          <button type="submit">Agregar</button>
         </form>
 
         <div>
-          <p>Arrastra las tareas</p>
             {pendingItems.length === 0 ? (
-              <p>No pending items</p>
+              <p>Escribe, crea y arrastra las tareas</p>
             ) : (<ul>{
               pendingItems.map(item => (
-                <DraggableItem
+                <MatrixItem
                   key={item.id}
                   item={item}
                   quadrant="pending"

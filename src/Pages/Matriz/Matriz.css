@@ -1,3 +1,11 @@
+.Matriz {
+  display: grid;
+  grid-template-columns: 1fr 5fr;
+}
+
+.Matriz > .Matriz-main { grid-column: 2/3; grid-row: 1/2;}
+.Matriz > .Matriz-aside { grid-column: 1/2; grid-row: 1/2;}
+
 .matriz-table {
   display: grid;
   grid-template-rows: 1fr 4fr 4fr;
