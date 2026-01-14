@@ -1,0 +1,8 @@
+.CronogramaModal {
+  padding: 20px;
+}
+
+.CronogramaModal-tareas{
+  display: flex;
+  flex-direction: column;
+}

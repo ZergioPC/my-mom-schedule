@@ -1,17 +1,26 @@
-.semana-list-item {
+.CronogramaItem {
   display: grid;
   grid-template-columns: 1fr 19fr;
   border: solid 2px black;
 }
 
-.semana-list-item > span {
+.CronogramaItem > span {
   writing-mode: vertical-rl;
   text-orientation: mixed;
   transform: rotateZ(180deg);
 }
 
-.semana-list-item > div {
+.CronogramaItem > div {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+}
+
+.CronogramaItem label {
+  display: flex;
+}
+
+.CronogramaItem-tareas {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }

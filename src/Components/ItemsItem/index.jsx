@@ -1,9 +1,9 @@
 import React from "react";
 import "./ItemsItem.css"
 
-function ItemsItem({ id, text, onDelete, onEdit, emoji}){
+function ItemsItem({ id, text, onDelete, onEdit, emoji, noEdit}){
   const [value, setValue] = React.useState("");
-  const [isEditable, setIsEditable] = React.useState(true);
+  const [isEditable, setIsEditable] = React.useState(noEdit ?? true);
   const [complete, setComplete] = React.useState(false);
 
   return isEditable ?(
@@ -27,17 +27,19 @@ function ItemsItem({ id, text, onDelete, onEdit, emoji}){
         complete ? "ItemsItem-complete" : "ItemsItem-idle"
       ) + " ItemsItem"}
     >
-      <div>{emoji}</div>
+      {emoji && (<div>{emoji}</div>)}
       <button
         onClick={()=> setComplete(!complete)}
       >V</button>
       <p>{text}</p>
-      <button
+
+      {onEdit && (<button
         onClick={()=> setIsEditable(true)}
-      >ed</button>
-      <button
+      >ed</button>)}
+
+      {onDelete && (<button
         onClick={()=> onDelete(id)}
-      >-</button>
+      >-</button>)}
     </div>
   );
 }
