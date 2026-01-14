@@ -79,9 +79,6 @@ function Cronograma(){
         ) : (
           <>
             <p>{valueSemana}</p>
-            <button
-              onClick={()=> setEditSemana(true)}
-            >Editar</button>
           </>
         )}
       </section>
