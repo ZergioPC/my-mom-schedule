@@ -1,3 +1,8 @@
 .Cronograma {
   background-color: aqua;
 }
+
+.Cronograma-meta {
+  display: flex;
+  justify-content: center;
+}
