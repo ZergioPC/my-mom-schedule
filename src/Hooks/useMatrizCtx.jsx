@@ -9,7 +9,7 @@ const matrizInit = {
   noImportante: [],
 }
 
-export default function useMatrizCtx(initCtx) {
+export default function useMatrizCtx() {
   const [save, setSave] = useLocalStorage("Matriz", matrizInit);
   const [matriz, setMatriz] = React.useState(save);
 

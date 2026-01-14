@@ -6,6 +6,7 @@ import { CronogramaModal } from "../../Components/CronogramaModal";
 
 import useCronograma from "../../Hooks/useCronograma";
 import useLocalStorage from "../../Hooks/useLocalStorage";
+import WeekPicker from "../../Components/WeekPicker";
 
 //Item: {id:00 ,submeta:"", tema:"", tareas[txt]}
 
@@ -21,18 +22,26 @@ function Cronograma(){
   const [valueMeta, setValueMeta] = React.useState(meta);
   const [editMeta, setEditMeta] = React.useState(meta.length === 0);
 
+  const [semana, setSemana] = useLocalStorage("Start","");
+  const [valueSemana,setValueSemana] = React.useState(semana);
+  const [editSemana, setEditSemana] = React.useState(semana.length === 0);
+
   const [modal,setModal] = React.useState(false);
 
   React.useEffect(()=>{
     setMeta(valueMeta);
   },[editMeta]);
 
+  React.useEffect(()=>{
+    setSemana(valueSemana);
+  },[editSemana]);
+
   return (
     <div className="Cronograma">
       <h1>Planifica tu tiempo</h1>
       
       {/* MARK: Meta-Semana */}
-      <section className="Cronograma-meta">
+      <section className="Cronograma-headerInput">
         <span>Meta: </span>
         {editMeta ? (
           <>
@@ -55,8 +64,26 @@ function Cronograma(){
         )}
       </section>
 
-      <section>
-        Semana inicial
+      <section className="Cronograma-headerInput">
+        <span>Semana inicial</span>
+        {editSemana ? (
+          <>
+            <WeekPicker 
+              date={valueSemana}
+              setDate={setValueSemana}
+            />
+            <button
+              onClick={()=> setEditSemana(false)}
+            >Ok</button>
+          </>
+        ) : (
+          <>
+            <p>{valueSemana}</p>
+            <button
+              onClick={()=> setEditSemana(true)}
+            >Editar</button>
+          </>
+        )}
       </section>
       
 
