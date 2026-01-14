@@ -56,6 +56,7 @@ function PlanSemanal(){
                   onDelete={rmHogar}
                   onEdit={editHogar}
                   emoji={emoji}
+                  noEdit={item.txt.length === 0}
                 />
               </li>
             )}
@@ -74,6 +75,7 @@ function PlanSemanal(){
                   onDelete={rmAcademia}
                   onEdit={editAcademia}
                   emoji={emoji}
+                  noEdit={item.txt.length === 0}
                 />
               </li>
             )}
@@ -93,6 +95,7 @@ function PlanSemanal(){
                   onDelete={rmLaboral}
                   onEdit={editLaboral}
                   emoji={emoji}
+                  noEdit={item.txt.length === 0}
                 />
               </li>
             )}
@@ -112,6 +115,7 @@ function PlanSemanal(){
                   onDelete={rmOcio}
                   onEdit={editOcio}
                   emoji={emoji}
+                  noEdit={item.txt.length === 0}
                 />
               </li>
             )}

@@ -1,5 +1,7 @@
 import React from "react";
 
+import useLocalStorage from "./useLocalStorage";
+
 const semanalInit = {
   hogar:[],
   acaademia:[],
@@ -7,8 +9,13 @@ const semanalInit = {
   ocio:[],
 };
 
-export default function usePlanSemanal(initCtx){
-  const [semanal,setSemanal] = React.useState(initCtx || semanalInit);
+export default function usePlanSemanal(){
+  const [save, setSave] = useLocalStorage("Semanal", semanalInit);
+  const [semanal,setSemanal] = React.useState(save);
+
+  React.useEffect(()=>{
+    setSave(semanal);
+  },[semanal]);
 
   // MARK: Hogar
   const addHogar = (item)=>{

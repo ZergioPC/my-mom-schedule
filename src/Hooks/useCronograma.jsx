@@ -1,7 +1,13 @@
 import React from "react";
+import useLocalStorage from "./useLocalStorage";
 
 export default function useCronograma(initData){
-  const [cronograma, setCronograma] = React.useState(initData || []);
+  const [save, setSave] = useLocalStorage("Cronograma", []);
+  const [cronograma, setCronograma] = React.useState(save);
+
+  React.useEffect(()=>{
+    setSave(cronograma);
+  },[cronograma]);
 
   const addCronograma =  (item)=>{
     setCronograma([

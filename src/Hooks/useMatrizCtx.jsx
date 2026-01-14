@@ -1,4 +1,5 @@
 import React from 'react';
+import useLocalStorage from './useLocalStorage';
 
 // Custom hook (your provided code)
 const matrizInit = {
@@ -9,7 +10,12 @@ const matrizInit = {
 }
 
 export default function useMatrizCtx(initCtx) {
-  const [matriz, setMatriz] = React.useState(initCtx || matrizInit);
+  const [save, setSave] = useLocalStorage("Matriz", matrizInit);
+  const [matriz, setMatriz] = React.useState(save);
+
+  React.useEffect(()=>{
+      setSave(matriz);
+    },[matriz]);
 
   const addUrgencia = (item) => {
     setMatriz({
