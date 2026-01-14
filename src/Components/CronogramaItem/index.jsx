@@ -9,7 +9,7 @@ function CronogramaItem({ item, counter }){
   return(
     <article className="CronogramaItem">
       <span>
-        {"Semana " + (semana < 10 ? "0"+semana : semana)}
+        Semana {String(semana).padStart(2,"0")}
       </span>
 
       <div>

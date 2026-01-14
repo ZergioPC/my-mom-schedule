@@ -1,0 +1,11 @@
+.Header {
+  list-style: none;
+  background-color: antiquewhite;
+}
+
+.Header-navList {
+  list-style: none;
+  display: flex;
+  flex-direction: row;
+  gap: 10px;
+}

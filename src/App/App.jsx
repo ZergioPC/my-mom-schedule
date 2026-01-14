@@ -14,7 +14,7 @@ import useMatrizCtx from '../Hooks/useMatrizCtx';
 const rutas = [
   {to: "/", text: "Home"},
   {to: "/matriz", text: "Matriz"},
-  {to: "/semana", text: "Planeador Semanal"},
+  {to: "/semana", text: "Planeador"},
   {to: "/cronograma", text: "Cronograma"},
 ];
 

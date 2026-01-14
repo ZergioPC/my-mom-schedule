@@ -1,12 +1,12 @@
+import "./Header.css";
 import React from "react";
 import { NavLink } from "react-router-dom";
 
 function Header({ rutas }){
   return (
-    <header>
-      <span>Organizador</span>
+    <header className="Header">
       <nav>
-        <ul>
+        <ul className="Header-navList">
           {rutas.map( (ruta,i) => (
             <li key={i}>
               <NavLink to={ruta.to}>{ruta.text}</NavLink>

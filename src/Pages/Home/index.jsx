@@ -1,4 +1,4 @@
-import React from "react";
+import "./Home.css"
 
 import useLocalStorage from "../../Hooks/useLocalStorage";
 import useCronograma from "../../Hooks/useCronograma";
@@ -20,18 +20,20 @@ function Home(){
   return(
     <>
       <h1>Organizador</h1>
-      <main>
+      <main className="Home">
 
         {/* MARK: Current Week */}
-        <section>
-          <h2>Metas de la Semana</h2>
+        <section className="Home-current">
+          <h2>Semana {
+            currentWeekData && String(currentWeekData.id).padStart(2,"0")
+          }</h2>
           {currentWeekData ? (
             <>
-              <p>{currentWeekData.submeta}</p>
-              <span>{currentWeekData.tema}</span>
+              <p>Meta: {currentWeekData.submeta}</p>
+              <span>Tema: {currentWeekData.tema}</span>
               <ul>
                 {currentWeekData.tareas.map((item, idx) =>
-                  <li  key={idx}>item</li>
+                  <li  key={idx}>{item.txt}</li>
                 )}
               </ul>
             </>
@@ -41,64 +43,67 @@ function Home(){
         </section>
 
         {/* MARK: Semana Tasks */}
-        <section>
+        <section className="Home-semana">
           <h2>Pendientes de la semana</h2>
           
-          <article>
-            <h3>Hogar</h3>
-            <ol>
-                {semanal.hogar.length === 0 ? (
-                  <p>No hay tareas de hogar aún...</p>
-                ) : (
-                  semanal.hogar.map((item) => 
-                    <li key={item.id}>{item.txt}</li>
-                  )
-                )}
-            </ol>
-          </article>
+          <div className="Home-semana-container">
+            <article>
+              <h3>Hogar</h3>
+              <ol>
+                  {semanal.hogar.length === 0 ? (
+                    <p>No hay tareas de hogar aún...</p>
+                  ) : (
+                    semanal.hogar.map((item) => 
+                      <li key={item.id}>{item.txt}</li>
+                    )
+                  )}
+              </ol>
+            </article>
 
-          <article>
-            <h3>Estudio</h3>
-            <ol>
-                {semanal.acaademia.length === 0 ? (
-                  <p>No hay tareas de estudio aún...</p>
-                ) : (
-                  semanal.acaademia.map((item) => 
-                    <li key={item.id}>{item.txt}</li>
-                  )
-                )}
-            </ol>
-          </article>
+            <article>
+              <h3>Estudio</h3>
+              <ol>
+                  {semanal.acaademia.length === 0 ? (
+                    <p>No hay tareas de estudio aún...</p>
+                  ) : (
+                    semanal.acaademia.map((item) => 
+                      <li key={item.id}>{item.txt}</li>
+                    )
+                  )}
+              </ol>
+            </article>
 
-          <article>
-            <h3>Trabajo</h3>
-            <ol>
-                {semanal.laboral.length === 0 ? (
-                  <p>No hay tareas de trabajo aún...</p>
-                ) : (
-                  semanal.laboral.map((item) => 
-                    <li key={item.id}>{item.txt}</li>
-                  )
-                )}
-            </ol>
-          </article>
+            <article>
+              <h3>Trabajo</h3>
+              <ol>
+                  {semanal.laboral.length === 0 ? (
+                    <p>No hay tareas de trabajo aún...</p>
+                  ) : (
+                    semanal.laboral.map((item) => 
+                      <li key={item.id}>{item.txt}</li>
+                    )
+                  )}
+              </ol>
+            </article>
 
-          <article>
-            <h3>Ocio</h3>
-            <ol>
-                {semanal.ocio.length === 0 ? (
-                  <p>No hay tareas de ocio aún...</p>
-                ) : (
-                  semanal.ocio.map((item) => 
-                    <li key={item.id}>{item.txt}</li>
-                  )
-                )}
-            </ol>
-          </article>
+            <article>
+              <h3>Ocio</h3>
+              <ol>
+                  {semanal.ocio.length === 0 ? (
+                    <p>No hay tareas de ocio aún...</p>
+                  ) : (
+                    semanal.ocio.map((item) => 
+                      <li key={item.id}>{item.txt}</li>
+                    )
+                  )}
+              </ol>
+            </article>
+          </div>
         </section>
 
+
         {/* MARK: Matriz */}
-        <section>
+        <section className="Home-matriz">
           <h2>Matriz Dofa</h2>
 
           <article>
