@@ -1,39 +1,89 @@
 .Matriz {
   display: grid;
   grid-template-columns: 1fr 5fr;
+  gap: 2rem;
 }
 
-.Matriz > .Matriz-main { grid-column: 2/3; grid-row: 1/2;}
-.Matriz > .Matriz-aside { grid-column: 1/2; grid-row: 1/2;}
+.Matriz-main {
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
 
 .matriz-table {
   display: grid;
+  grid-template-columns: 1fr 4fr 4fr;
   grid-template-rows: 1fr 4fr 4fr;
-  grid-template-columns: 1fr 4fr 4fr ;
+  gap: 1rem;
+  height: 70vh;
 }
 
 .matriz-title {
-  background-color: aqua;
+  text-align: center;
+  font-weight: 500;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.matriz-title-1 { grid-row: 1/2; grid-column: 2/3; }
-.matriz-title-2 { grid-row: 1/2; grid-column: 3/4; }
-.matriz-title-3 { grid-row: 2/3; grid-column: 1/2; }
-.matriz-title-4 { grid-row: 3/4; grid-column: 1/2; }
-
-.matriz-title-3, .matriz-title-4 {
+.matriz-title-1 { 
+  grid-row: 1/2; 
+  grid-column: 2/3;
+  background-color: #c0392b;
+}
+.matriz-title-2 { 
+  grid-row: 1/2; 
+  grid-column: 3/4;
+  background-color: #27ae60;
+}
+.matriz-title-3 { 
+  grid-row: 2/3; 
+  grid-column: 1/2;
+  background-color: #f39c12;
   text-orientation: mixed; 
   writing-mode: vertical-lr; 
   transform: rotateZ(180deg);
 }
-
-.matriz-sec > ul{
-  width: 100%;
-  height: 100%;
-  background-color: blueviolet;
+.matriz-title-4 { 
+  grid-row: 3/4; 
+  grid-column: 1/2;
+  background-color: #7f8c8d;
+  text-orientation: mixed; 
+  writing-mode: vertical-lr; 
+  transform: rotateZ(180deg);
 }
 
 .matriz-sec-1 { grid-row: 2/3; grid-column: 2/3; }
 .matriz-sec-2 { grid-row: 2/3; grid-column: 3/4; }
 .matriz-sec-3 { grid-row: 3/4; grid-column: 2/3; }
 .matriz-sec-4 { grid-row: 3/4; grid-column: 3/4; }
+
+.Matriz-aside {
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.Matriz-aside h2 {
+  margin-bottom: 1rem;
+}
+
+.Matriz-aside form {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.Matriz-aside input {
+  width: 100%;
+}
+
+.Matriz-aside ul {
+  padding: 0;
+}

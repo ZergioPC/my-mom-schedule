@@ -1,4 +1,31 @@
 .MatrixItem {
-  list-style: none;
+  background-color: var(--background-color);
+  padding: 1rem;
+  box-shadow: 0 1px 2px var(--shadow-color);
+  margin-bottom: 0.5rem;
+  cursor: grab;
   display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-radius: 10px;
+}
+
+.MatrixItem:grabbing {
+  cursor: grabbing;
+}
+
+.MatrixItem-delete {
+  background-color: transparent;
+  border: none;
+  color: #c0392b;
+  font-weight: bold;
+  cursor: pointer;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s, opacity 0.2s linear;
+}
+
+.MatrixItem:hover .MatrixItem-delete {
+  visibility: visible;
+  opacity: 1;
 }

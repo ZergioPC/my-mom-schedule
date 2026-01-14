@@ -19,26 +19,32 @@ function Home(){
 
   return(
     <>
-      <h1>Organizador</h1>
+      <h1>Menú Principal</h1>
       <main className="Home">
 
         {/* MARK: Current Week */}
         <section className="Home-current">
-          <h2>Semana {
-            currentWeekData && String(currentWeekData.id).padStart(2,"0")
-          }</h2>
-          {currentWeekData ? (
+          <div className="Home-current-title">
+            <h2>{"Semana "}
+              {currentWeekData && String(currentWeekData.id).padStart(2,"0")}
+              </h2>
+            {currentWeekData ? (
             <>
-              <p>Meta: {currentWeekData.submeta}</p>
-              <span>Tema: {currentWeekData.tema}</span>
+              <p>Meta Semanal: <b>{currentWeekData.submeta}</b></p>
+              <span>{currentWeekData.tema}</span>
+            </>
+          ) : (
+            <p>No se ha creado nada para esta semana</p>
+          )}
+          </div>
+          {currentWeekData && (
+            <div className="Home-current-items">
               <ul>
                 {currentWeekData.tareas.map((item, idx) =>
                   <li  key={idx}>{item.txt}</li>
                 )}
               </ul>
-            </>
-          ) : (
-            <p>No se ha creado nada para esta semana</p>
+            </div>
           )}
         </section>
 
@@ -104,9 +110,9 @@ function Home(){
 
         {/* MARK: Matriz */}
         <section className="Home-matriz">
-          <h2>Matriz Dofa</h2>
+          <h2>Matriz Eisenhower</h2>
 
-          <article>
+          <article className="matriz-urgente">
             {matriz.urgente.length === 0 ? (
               <p>No hay urgencias de mucha importancia</p>
             ) : (
@@ -118,7 +124,7 @@ function Home(){
             )}
           </article>
 
-          <article>
+          <article className="matriz-importante">
             {matriz.noUrgente.length === 0 ? (
               <p>No hay urgencias de poca importancia</p>
             ) : (
@@ -130,7 +136,7 @@ function Home(){
             )}
           </article>
 
-          <article>
+          <article className="matriz-nourgente">
             {matriz.importante.length === 0 ? (
               <p>No hay tareas importantes no urgentes</p>
             ) : (
@@ -142,7 +148,7 @@ function Home(){
             )}
           </article>
 
-          <article>
+          <article className="matriz-noimportante">
             {matriz.noImportante.length === 0 ? (
               <p>No hay tareas ni urgentes ni importantes</p>
             ) : (

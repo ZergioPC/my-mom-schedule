@@ -36,59 +36,54 @@ function CronogramaModal({ onSave, onClose }) {
 
   return (
     <Modal onClose={onClose}>
-      <form onSubmit={handleSubmit} className="CronogramaModal">
+      <div className="CronogramaModal">
         <h2>Agrega una nueva semana</h2>
+        <form onSubmit={handleSubmit} className="CronogramaModal-form">
+          <input
+            type="text"
+            placeholder="Submeta para esta semana..."
+            value={submeta}
+            onChange={e => setSubmeta(e.target.value)}
+            required
+          />
+          <input
+            type="text"
+            placeholder="Tema de la semana..."
+            value={tema}
+            onChange={e => setTema(e.target.value)}
+            required
+          />
 
-        <section>
-          <label>
-            <span>Submeta :</span>
-            <input
-              placeholder="Submeta para esta semana..."
-              value={submeta}
-              onChange={e => setSubmeta(e.target.value)}
-              required
-            />
-          </label>
-        </section>
+          <div className="CronogramaModal-tareas">
+            <h3>Tareas <i>(opcional)</i></h3>
+            {tareas.map((tarea, index) => (
+              <div key={index} className="CronogramaModal-tareas-item">
+                <input
+                  type="text"
+                  placeholder={`Tarea ${index + 1}`}
+                  value={tarea.txt}
+                  onChange={e => updateTarea(index, e.target.value)}
+                />
+              </div>
+            ))}
+            <button 
+              type="button"
+              onClick={addTarea}
+            >
+              + Añadir tarea
+            </button>
+          </div>
 
-        <section>
-          <label>
-            <span>Tema: </span>
-            <input
-              placeholder="Tema de la semana..."
-              value={tema}
-              onChange={e => setTema(e.target.value)}
-              required
-            />
-          </label>
-        </section>
-
-        <section className="CronogramaModal-tareas">
-          <h3>Tareas</h3>
-
-          {tareas.map((tarea, index) => (
-            <input
-              key={index}
-              placeholder={`Tarea ${index + 1}`}
-              value={tarea.txt}
-              onChange={e => updateTarea(index, e.target.value)}
-            />
-          ))}
-
-          <button 
-            type="button"
-            onClick={addTarea}
-          >+</button>
-        </section>
-
-        <div>
-          <button type="submit"
-          >Save</button>
-          <button type="button" onClick={onClose}
-          >close
-          </button>
-        </div>
-      </form>
+          <div className="CronogramaModal-actions">
+            <button type="submit">Guardar</button>
+            <button 
+              type="button" 
+              onClick={onClose}
+              className="button-red"
+            >Cancelar</button>
+          </div>
+        </form>
+      </div>
     </Modal>
   );
 }

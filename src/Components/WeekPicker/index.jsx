@@ -1,4 +1,5 @@
 import { format, startOfWeek } from "date-fns";
+import "./WeekPicker.css";
 
 function WeekPicker({ date, setDate }) {
   const handleChange = (e) => {
@@ -12,10 +13,9 @@ function WeekPicker({ date, setDate }) {
   };
 
   return (
-    <label>
-      Select a date:
+    <div className="WeekPicker">
       <input type="date" onChange={handleChange} />
-    </label>
+    </div>
   );
 }
 

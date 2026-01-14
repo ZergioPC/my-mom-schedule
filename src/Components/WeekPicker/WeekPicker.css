@@ -1,0 +1,9 @@
+.WeekPicker {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.WeekPicker label {
+  font-weight: 500;
+}

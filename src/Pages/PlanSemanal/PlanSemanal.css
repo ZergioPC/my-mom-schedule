@@ -1,5 +1,27 @@
 .PlanSemanal {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  gap: 2rem;
+}
+
+.PlanSemanal section {
+  background-color: var(--card-background-color);
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.PlanSemanal h2 {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid var(--accent-color);
+  padding-bottom: 0.5rem;
+}
+
+.PlanSemanal ul {
+  list-style: none;
+  padding: 0;
+}
+
+.PlanSemanal > section > button {
+  margin-top: 1rem;
 }

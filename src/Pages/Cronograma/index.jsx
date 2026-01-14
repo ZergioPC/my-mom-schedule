@@ -41,13 +41,15 @@ function Cronograma(){
       <h1>Planifica tu tiempo</h1>
       
       {/* MARK: Meta-Semana */}
-      <section className="Cronograma-headerInput">
+      <section className="Cronograma-header">
+      <div className="Cronograma-headerInput">
         <span>Meta: </span>
         {editMeta ? (
           <>
             <input 
               type="text" 
               value={valueMeta}
+              placeholder="Tu meta final es..."
               onChange={e => setValueMeta(e.target.value)}
             />
             <button
@@ -62,10 +64,10 @@ function Cronograma(){
             >Editar</button>
           </>
         )}
-      </section>
+      </div>
 
-      <section className="Cronograma-headerInput">
-        <span>Semana inicial</span>
+      <div className="Cronograma-headerInput">
+        <span>Iniciaste el </span>
         {editSemana ? (
           <>
             <WeekPicker 
@@ -81,6 +83,7 @@ function Cronograma(){
             <p>{valueSemana}</p>
           </>
         )}
+      </div>
       </section>
       
 
@@ -108,6 +111,7 @@ function Cronograma(){
           onClick={()=> setModal(true)}
         >+</button>
         <button
+          className="button-red"
           onClick={()=> rmLastCronograma()}
         >-</button>
       </section>

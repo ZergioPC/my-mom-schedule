@@ -1,5 +1,6 @@
 import React from "react";
 import { MatrixItem } from "../MatrixItem";
+import "./MatrixQuadrant.css";
 
 function MatrixQuadrant({ 
   items, 
@@ -14,7 +15,7 @@ function MatrixQuadrant({
     <section
       onDrop={(e) => onDrop(e, quadrant)}
       onDragOver={onDragOver}
-      className={className + " matriz-sec"}
+      className={`MatrixQuadrant ${className}`}
     >
       <ul>
         {items.map((item, idx) => (
@@ -24,6 +25,7 @@ function MatrixQuadrant({
             quadrant={quadrant}
             onDragStart={onDragStart}
             onDelete={onDelete}
+            showDelete={true}
           />
         ))}
       </ul>

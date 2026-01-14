@@ -1,12 +1,10 @@
-.ItemsList-p{
-  font-style: italic;
-}
-
 .ItemsList {
   list-style: none;
   padding: 0;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  justify-content: start;
+  margin-top: 1rem;
+}
+
+.ItemsList-p {
+  font-style: italic;
+  color: var(--secondary-color);
 }

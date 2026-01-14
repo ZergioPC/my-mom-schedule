@@ -1,19 +1,26 @@
 .CronogramaItem {
+  position: relative;
   display: grid;
+  padding: 1.5rem 7px;
   grid-template-columns: 1fr 19fr;
-  border: solid 2px black;
+  border: dotted 4px var(--primary-color);
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
 }
 
-.CronogramaItem > span {
+.CronogramaItem > h3 {
+  margin-right: 20px;
+  border-left: dotted 4px var(--primary-color);
+  transform: rotateZ(180deg);
   writing-mode: vertical-rl;
   text-orientation: mixed;
-  transform: rotateZ(180deg);
 }
 
-.CronogramaItem > div {
+.CronogramaItem-body {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
+  text-align: left;
 }
 
 .CronogramaItem label {
@@ -21,6 +28,34 @@
 }
 
 .CronogramaItem-tareas {
+  margin: 5px;
   display: grid;
   grid-template-columns: repeat(2, 1fr);
+  gap: 7px;
+  text-align: left;
 }
+
+.CronogramaItem-tareas > li {
+  background-color: var(--background-color);
+  padding: 2px 7px;
+  border-radius: 5px;
+}
+
+.CronogramaItem-btn {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+}
+
+.button-red {
+  background-color: var(--red-btn);
+}
+
+/* 
+
+.CronogramaItem-tareas {
+  list-style: none;
+  padding: 0;
+  margin-top: 1rem;
+}
+*/
