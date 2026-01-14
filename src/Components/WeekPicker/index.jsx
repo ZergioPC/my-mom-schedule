@@ -1,10 +1,13 @@
-import { format } from "date-fns";
+import { format, startOfWeek } from "date-fns";
 
 function WeekPicker({ date, setDate }) {
   const handleChange = (e) => {
     const selectedDate = new Date(e.target.value);
-    const formattedDate = format(selectedDate, "yyyy-MM-dd");
 
+    // Get start of the week (Monday)
+    const weekStart = startOfWeek(selectedDate, { weekStartsOn: 0 });
+
+    const formattedDate = format(weekStart, "yyyy-MM-dd");
     setDate(formattedDate);
   };
 
