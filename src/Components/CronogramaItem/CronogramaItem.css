@@ -51,6 +51,10 @@
   background-color: var(--background-color);
 }
 
+.CronogramaItem-tareas li > button {
+  background-color: var(--red-btn);
+}
+
 .CronogramaItem-tareas > button {
   margin: 10px auto;
   background-color: var(--green-btn);

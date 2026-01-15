@@ -12,7 +12,7 @@ function CronogramaItem({ item, counter, onEdit }){
 
   React.useEffect(()=>{
     setEditedItem(item)
-  },[item]);
+  },[item, isEditing]);
 
   return(
     <article className="CronogramaItem">
@@ -54,6 +54,15 @@ function CronogramaItem({ item, counter, onEdit }){
                       )
                     })}
                   />
+                  <button
+                    className="red-btn"
+                    onClick={()=> setEditedItem({
+                      ...editedItem,
+                      tareas: editedItem.tareas.filter((prev, i)=>
+                        idx !== i 
+                      )
+                    })}
+                  >🗑️</button>
                 </li>
               )
             ) : (
