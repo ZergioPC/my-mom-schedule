@@ -1,4 +1,5 @@
 import "./Home.css"
+import React from "react";
 
 import useLocalStorage from "../../Hooks/useLocalStorage";
 import useCronograma from "../../Hooks/useCronograma";
@@ -7,15 +8,26 @@ import usePlanSemanal from "../../Hooks/usePlanSemanal";
 import idMatchToWeek from "../../Utils/idMatchToWeek";
 import useMatrizCtx from "../../Hooks/useMatrizCtx";
 
+const currentInit = {
+    "id": 0,
+    "submeta": "",
+    "tema": "",
+    "tareas": [],
+}
+
 function Home(){
   const [startWeek, _ ] = useLocalStorage("Start","");
+  const [currentWeekData, setCurrent ] = useLocalStorage("CurrentWeek", currentInit);
+
   const { cronograma } = useCronograma();
   const { semanal } =  usePlanSemanal();
-  const { matriz } = useMatrizCtx();
+  const { matriz } = useMatrizCtx();  
 
-  const currentWeekData = cronograma.find(item =>
-    idMatchToWeek(item, startWeek)
-  );  
+  React.useEffect(()=>{
+    setCurrent(cronograma.find(item =>
+      idMatchToWeek(item, startWeek)
+    ));
+  },[]);
 
   return(
     <>
