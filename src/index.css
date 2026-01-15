@@ -9,6 +9,7 @@
   --shadow-color: rgba(0, 0, 0, 0.1);
   --border-color: #bdc3c7;
   --red-btn: #be2f47;
+  --green-btn: #2ab15e;
 
   font-family: var(--font-family);
   line-height: 1.5;
@@ -63,6 +64,11 @@ input[type="date"] {
   border: 1px solid var(--border-color);
   border-radius: 0.25rem;
   font-family: var(--font-family);
+}
+
+input[type="checkbox"]{
+  transform: scale(1.8);
+  accent-color: var(--accent-color);
 }
 
 ul, ol {

@@ -10,6 +10,10 @@ function CronogramaItem({ item, counter, onEdit }){
     setIsEditing(false);
   };
 
+  React.useEffect(()=>{
+    setEditedItem(item)
+  },[item]);
+
   return(
     <article className="CronogramaItem">
       <h3>Semana {String(counter).padStart(2,"0")}</h3>
@@ -28,7 +32,6 @@ function CronogramaItem({ item, counter, onEdit }){
               onChange={(e) => setEditedItem({...editedItem, tema: e.target.value})}
               placeholder="Tema"
             />
-            <button onClick={handleSave}>Save</button>
           </>
         ) : (
           <>
@@ -36,20 +39,64 @@ function CronogramaItem({ item, counter, onEdit }){
             <p><strong>Tema:</strong> {item.tema}</p>
           </>
         )}
-        
-        {item.tareas.length > 0 && (
-          <ul className="CronogramaItem-tareas">
-            {item.tareas.map((tarea, idx) =>
-              <li key={idx}>{tarea.txt}</li>
+        <div className="CronogramaItem-tareas">
+          <ul>
+            {isEditing ? (
+              editedItem.tareas.map((tarea, idx) =>
+                <li key={idx}>
+                  <input 
+                    type="text"
+                    value={editedItem.tareas[idx].txt}
+                    onChange={(e)=> setEditedItem({
+                      ...editedItem,
+                      tareas: editedItem.tareas.map((prev, i)=>
+                        idx === i ? {txt: e.target.value} : prev
+                      )
+                    })}
+                  />
+                </li>
+              )
+            ) : (
+              item.tareas.map((tarea, idx) =>
+                <li key={idx} className={tarea.complete ? "item-Complete" : ""}>
+                  <input 
+                    type="checkbox"
+                    checked={tarea.complete ?? false}
+                    onChange={()=> onEdit(
+                      {
+                        ...item, 
+                        tareas: item.tareas.map((prev, i)=>
+                          idx === i ? {...item.tareas[idx], complete: !prev.complete} : prev
+                        )
+                      }
+                    )}
+                  />
+                  <p>{tarea.txt}</p>
+                </li>
+              )
             )}
           </ul>
-        )}
+          {isEditing && (
+            <button 
+              onClick={()=> setEditedItem(
+                {
+                  ...editedItem, 
+                  tareas:[
+                    ...editedItem.tareas,
+                    {txt: "", complete: false},
+                  ]
+                }
+              )}
+            >Agregar tarea</button>
+          )}
+        </div>
+        {isEditing && (<button onClick={handleSave}>Save</button>)}
       </div>
-      {/* <button 
+      <button 
         className="CronogramaItem-btn"
         onClick={() => setIsEditing(!isEditing)}
       >{isEditing ? 'Cancel' : 'Edit'}
-      </button> */}
+      </button>
     </article>
   );
 }

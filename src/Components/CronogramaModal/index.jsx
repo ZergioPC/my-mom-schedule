@@ -15,7 +15,7 @@ function CronogramaModal({ onSave, onClose }) {
   const updateTarea = (index, value) => {
     setTareas(prev =>
       prev.map((t, i) =>
-        i === index ? { txt: value } : t
+        i === index ? { txt: value, complete: false } : t
       )
     );
   };
