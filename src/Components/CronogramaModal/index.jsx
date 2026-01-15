@@ -9,13 +9,18 @@ function CronogramaModal({ onSave, onClose }) {
   const [tareas, setTareas] = useState([{ txt: "" }]);
 
   const addTarea = () => {
-    setTareas(prev => [...prev, { txt: "" }]);
+    setTareas(prev => [...prev, { 
+      txt: "",
+      complete: false,
+      day: null,
+      matriz: null,
+    }]);
   };
 
   const updateTarea = (index, value) => {
     setTareas(prev =>
       prev.map((t, i) =>
-        i === index ? { txt: value, complete: false } : t
+        i === index ? { ...prev, txt: value } : t
       )
     );
   };

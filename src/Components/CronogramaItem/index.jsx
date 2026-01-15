@@ -50,7 +50,7 @@ function CronogramaItem({ item, counter, onEdit }){
                     onChange={(e)=> setEditedItem({
                       ...editedItem,
                       tareas: editedItem.tareas.map((prev, i)=>
-                        idx === i ? {txt: e.target.value} : prev
+                        idx === i ? {...prev ,txt: e.target.value} : prev
                       )
                     })}
                   />
@@ -75,7 +75,7 @@ function CronogramaItem({ item, counter, onEdit }){
                       {
                         ...item, 
                         tareas: item.tareas.map((prev, i)=>
-                          idx === i ? {...item.tareas[idx], complete: !prev.complete} : prev
+                          idx === i ? {...prev, complete: !prev.complete} : prev
                         )
                       }
                     )}

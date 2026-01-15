@@ -44,7 +44,7 @@ function Home(){
                   <li
                    key={idx}
                    className={item.complete ? "tarea-complete" : ""}
-                  >{item.txt}</li>
+                  ><span>{item.txt}</span></li>
                 )}
               </ul>
             </div>
