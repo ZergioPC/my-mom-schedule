@@ -52,6 +52,11 @@ button:hover {
   background-color: #3498db;
 }
 
+button:disabled {
+  cursor: not-allowed;
+  background-color: var(--secondary-color);
+}
+
 input[type="text"],
 input[type="date"] {
   padding: 0.5rem;

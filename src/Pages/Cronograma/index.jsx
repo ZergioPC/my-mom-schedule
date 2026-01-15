@@ -75,8 +75,9 @@ function Cronograma(){
               setDate={setValueSemana}
             />
             <button
+              disabled={valueSemana.length === 0}
               onClick={()=> setEditSemana(false)}
-            >Ok</button>
+            >{valueSemana.length !== 0 ? "Ok" : "-"}</button>
           </>
         ) : (
           <>
