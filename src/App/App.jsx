@@ -1,7 +1,7 @@
 import './App.css'
 
 import { useState } from 'react';
-import { HashRouter, Routes, Route } from 'react-router-dom'
+import { Routes, Route } from 'react-router-dom'
 
 import { Header } from '../Components/Header';
 import { Home } from '../Pages/Home';
@@ -24,7 +24,7 @@ function App() {
   const { matriz } = useMatrizCtx();
 
   return (
-    <HashRouter>
+    <>
       <Header rutas={rutas} />
 
       <Routes>
@@ -33,7 +33,7 @@ function App() {
         <Route path='/semana' element={<PlanSemanal />} />
         <Route path='/cronograma' element={<Cronograma />} />
       </Routes>
-    </HashRouter>
+    </>
   )
 }
 
