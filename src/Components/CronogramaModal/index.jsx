@@ -6,7 +6,10 @@ import { Modal } from "../Modal";
 function CronogramaModal({ onSave, onClose }) {
   const [submeta, setSubmeta] = useState("");
   const [tema, setTema] = useState("");
-  const [tareas, setTareas] = useState([{ txt: "" }]);
+  const [counter, setCounter] = useState(1);
+  const [tareas, setTareas] = useState([
+    { txt: "", complete: false, day: null, matriz: null, id: null }
+  ]);
 
   const addTarea = () => {
     setTareas(prev => [...prev, { 
@@ -14,13 +17,15 @@ function CronogramaModal({ onSave, onClose }) {
       complete: false,
       day: null,
       matriz: null,
+      id: counter,
     }]);
+    setCounter(prev => prev + 1)
   };
 
   const updateTarea = (index, value) => {
     setTareas(prev =>
       prev.map((t, i) =>
-        i === index ? { ...prev, txt: value } : t
+        i === index ? { ...t, txt: value } : t
       )
     );
   };

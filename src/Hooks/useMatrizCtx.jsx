@@ -3,6 +3,7 @@ import useLocalStorage from './useLocalStorage';
 
 // Custom hook (your provided code)
 const matrizInit = {
+  noAsigned: [],
   urgente: [],
   noUrgente: [],
   importante: [],
