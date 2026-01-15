@@ -6,9 +6,9 @@ import { Modal } from "../Modal";
 function CronogramaModal({ onSave, onClose }) {
   const [submeta, setSubmeta] = useState("");
   const [tema, setTema] = useState("");
-  const [counter, setCounter] = useState(1);
+  const [counter, setCounter] = useState(2);
   const [tareas, setTareas] = useState([
-    { txt: "", complete: false, day: null, matriz: null, id: null }
+    { txt: "", complete: false, day: null, matriz: null, id: 1 }
   ]);
 
   const addTarea = () => {
