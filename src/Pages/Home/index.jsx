@@ -41,7 +41,10 @@ function Home(){
             <div className="Home-current-items">
               <ul>
                 {currentWeekData.tareas.map((item, idx) =>
-                  <li  key={idx}>{item.txt}</li>
+                  <li
+                   key={idx}
+                   className={item.complete ? "tarea-complete" : ""}
+                  >{item.txt}</li>
                 )}
               </ul>
             </div>
