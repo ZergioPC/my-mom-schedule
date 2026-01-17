@@ -8,6 +8,7 @@ import { Home } from '../Pages/Home';
 import { Matriz } from '../Pages/Matriz';
 import { PlanSemanal } from '../Pages/PlanSemanal';
 import { Cronograma } from '../Pages/Cronograma';
+import { Tareas } from '../Pages/Tareas';
 
 import useMatrizCtx from '../Hooks/useMatrizCtx';
 
@@ -16,6 +17,7 @@ const rutas = [
   {to: "/matriz", text: "Matriz"},
   {to: "/semana", text: "Planeador"},
   {to: "/cronograma", text: "Cronograma"},
+  {to: "/Tareas", text: "Tareas"},
 ];
 
 //Agregar Horario
@@ -32,6 +34,7 @@ function App() {
         <Route path='/matriz' element={<Matriz />} />
         <Route path='/semana' element={<PlanSemanal />} />
         <Route path='/cronograma' element={<Cronograma />} />
+        <Route path='/Tareas' element={<Tareas />}/>
       </Routes>
     </>
   )

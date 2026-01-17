@@ -6,10 +6,14 @@
   --background-color: #dddddd;
   --text-color: #2c3e50;
   --card-background-color: #ffffff;
-  --shadow-color: rgba(0, 0, 0, 0.1);
+  --shadow-color: rgba(0, 0, 0, 0.3);
   --border-color: #bdc3c7;
   --red-btn: #be2f47;
   --green-btn: #2ab15e;
+  --item-mooring: #F1BA88;
+  --item-midday: #e27eb5;
+  --item-afternoon: #45df8a;
+  --item-night: #03A791;
 
   font-family: var(--font-family);
   line-height: 1.5;
