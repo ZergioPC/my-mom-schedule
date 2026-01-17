@@ -1,9 +1,9 @@
 import React from "react";
 import "./ItemsItem.css"
 
-function ItemsItem({ id, text, onDelete, onEdit, noEdit}){
+function ItemsItem({ id, text, onDelete, onEdit}){
   const [value, setValue] = React.useState(text);
-  const [isEditable, setIsEditable] = React.useState(noEdit ?? false);
+  const [isEditable, setIsEditable] = React.useState(text.length === 0);
 
   const handleSave = () => {
     onEdit(id, value);
