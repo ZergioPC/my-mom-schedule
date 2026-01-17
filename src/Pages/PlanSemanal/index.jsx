@@ -1,8 +1,8 @@
 import React from "react";
 import "./PlanSemanal.css";
 import { useManageData, dayTypes, timeTypes } from "../../Hooks/useManageData";
-import { ItemsList } from "../../Components/ItemsList";
 import { SemanaList } from "../../Components/SemanaList";
+import { SemanaItem } from "../../Components/SemanaItem";
 
 const sizes_init = {
   morning: 1,
@@ -30,7 +30,16 @@ function PlanSemanal(){
       <h1>Planeador Semanal</h1>
       <main className="PlanSemanal">
         <section className="no-asigned-yet">
-          {/* Tareas aun no asignadas a un dia */}
+          <SemanaList>
+            {tareas.filter(item => 
+              item.day === dayTypes.none
+            ).map((item,idx)=>(
+              <SemanaItem 
+                key={idx}
+                text={item.txt}
+              />
+            ))}
+          </SemanaList>
         </section>
 
         <section className="Plan-horario">
@@ -48,31 +57,58 @@ function PlanSemanal(){
               <SemanaList
                 className="morning"
                 size={sizes.morning}
-                items={tareas.filter(item => 
+              >
+                {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.morning
-                )}
-              />
+                ).map((item,idx)=>(
+                  <SemanaItem 
+                    key={idx}
+                    text={item.txt}
+                  />
+                ))}
+              </SemanaList>
+
               <SemanaList
                 className="midday"
                 size={sizes.midday}
-                items={tareas.filter(item => 
+              >
+                {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.midday
-                )}
-              />
+                ).map((item,idx)=>(
+                  <SemanaItem 
+                    key={idx}
+                    text={item.txt}
+                  />
+                ))}
+              </SemanaList>
+
               <SemanaList
                 className="afternoon"
                 size={sizes.after}
-                items={tareas.filter(item => 
+              >
+                {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.afternoon
-                )}
-              />
+                ).map((item,idx)=>(
+                  <SemanaItem 
+                    key={idx}
+                    text={item.txt}
+                  />
+                ))}
+              </SemanaList>
+
               <SemanaList
                 className="night"
                 size={sizes.night}
-                items={tareas.filter(item => 
+              >
+                {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.night
-                )}
-              />
+                ).map((item,idx)=>(
+                  <SemanaItem 
+                    key={idx}
+                    text={item.txt}
+                  />
+                ))}
+              </SemanaList>
             </div>
           ))}
           

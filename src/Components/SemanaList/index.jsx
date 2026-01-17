@@ -1,14 +1,18 @@
 import React from "react";
 import "./SemanaList.css"
 
-function SemanaList({items, size, className}){   
+function SemanaList({children, size, className}){   
+  const childsArray = React.Children.toArray(children);
+
   return (
-    <div className={"SemanaList SemanaList-"+className}>
-      {items.length === 0 ? (
+    <div 
+      className={"SemanaList SemanaList-"+className}
+    >
+      {childsArray.length === 0 ? (
         <p className="ItemsList-p">No hay tareas aun...</p>
       ) : (
         <ul className="ItemsList">
-          {items.map((item,idx) => (<li key={idx}>uwu</li>))}
+          {childsArray}
         </ul>
       )}
     </div>
