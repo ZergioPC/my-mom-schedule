@@ -1,5 +1,8 @@
 import React from "react";
+import "./Ajustes.css";
+
 import { useManageData } from "../../Hooks/useManageData";
+
 import { ItemsList } from "../../Components/ItemsList";
 import { ItemsItem } from "../../Components/ItemsItem";
 
@@ -14,7 +17,7 @@ function Ajustes(){
   return (
     <>
       <h1>Ajustes</h1>
-      <main>
+      <main className="Ajustes">
         <section>
           <h2>Meta</h2>
           <p>Escribe el proposito actual que tengas</p>
@@ -28,6 +31,7 @@ function Ajustes(){
             />
           <button
             type="submit"
+            className="Ajustes-btn"
             onClick={()=> setMeta(metaValue)}
           >Aceptar</button>
           </div>
@@ -50,6 +54,7 @@ function Ajustes(){
               ))}
             </ItemsList>
             <button
+              className="Ajustes-btn"
               onClick={()=> newTarea()}
             >Agregar</button>
           </div>

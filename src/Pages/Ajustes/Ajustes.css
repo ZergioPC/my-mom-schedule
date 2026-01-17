@@ -1,0 +1,15 @@
+.Ajustes > section {
+  margin: 20px;
+  padding: 10px 20px;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+  border: dotted 5px var(--primary-color);
+  border-radius: 15px;
+  background-color: var(--card-background-color);
+}
+
+.Ajustes-btn {
+  margin: 5px;
+}
