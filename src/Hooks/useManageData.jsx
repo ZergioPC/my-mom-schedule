@@ -59,15 +59,15 @@ function useManageData(){
     )))
   }
 
-  const editTareaMatriz = (id, value)=>{
+  const editTareaMatriz = (id, quarter)=>{
     setTareas(tareas.map(item =>(
-      item.id === id ? {...item, matriz:value} : item
+      item.id === id ? {...item, matriz:quarter} : item
     )))
   }
 
-  const editTareaDay = (id, value)=>{
+  const editTareaDay = (id, day, time)=>{
     setTareas(tareas.map(item =>(
-      item.id === id ? {...item, day:value} : item
+      item.id === id ? {...item, day:value, time:time} : item
     )))
   }
 
