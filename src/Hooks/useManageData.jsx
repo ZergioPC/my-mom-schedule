@@ -35,6 +35,10 @@ function useManageData(){
   const [tareas, setTareas] = useLocalStorage("Organizador-Tareas",[])
   const [counter, setCounter] = React.useState(tareas.length + 1 ?? 1);
 
+  React.useEffect(()=>{
+    setCounter(tareas.length + 1);
+  },[tareas]);
+
   const newTarea = ()=>{
     setTareas([...tareas, 
       {
@@ -46,7 +50,6 @@ function useManageData(){
         matriz:matrizTypes.none
       }
     ]);
-    setCounter([prev => prev + 1]);
   }
 
   const rmTarea = (id)=>{
