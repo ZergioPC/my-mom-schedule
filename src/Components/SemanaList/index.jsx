@@ -40,9 +40,9 @@ function SemanaList({ children, className = "", size = 1, day, time, onDrop }) {
       onDrop={handleDrop}
     >
       {childsArray.length === 0 ? (
-        <p className="ItemsList-p">No hay tareas aun...</p>
+        <p className="SemanaList-p">No hay tareas aun...</p>
       ) : (
-        <ul className="ItemsList">
+        <ul className="SemanaList-ul">
           {childsArray}
         </ul>
       )}

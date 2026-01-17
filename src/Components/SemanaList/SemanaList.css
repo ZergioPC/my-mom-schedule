@@ -2,7 +2,27 @@
   border: dotted 4px;
 }
 
+.SemanaList.drag-over {
+  background: #e3f2fd;
+  border-style: solid;
+}
+
 .SemanaList-morning {border-color: var(--item-mooring);}
 .SemanaList-midday {border-color: var(--item-midday);}
 .SemanaList-afternoon {border-color: var(--item-afternoon);}
 .SemanaList-night {border-color: var(--item-night);}
+
+.SemanaList-ul{
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  gap: 10px;
+}
+
+.SemanaList-p {
+  margin: 0 auto;
+  width: 100px;
+  font-style: italic;
+  opacity: 40%;
+}

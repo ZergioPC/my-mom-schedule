@@ -1,4 +1,5 @@
 import React from "react";
+import "./SemanaItem.css"
 
 function SemanaItem({ text, id, onDragStart }) {
   const handleDragStart = (e) => {
@@ -10,10 +11,15 @@ function SemanaItem({ text, id, onDragStart }) {
   return (
     <li
       draggable="true"
-      className="Semana-item"
+      className="SemanaItem"
       onDragStart={handleDragStart}
     >
-      {text}
+      <span className="SemanaItem-decoration">
+        {Array.from({ length: 6 }).map((_, idx) => (
+          <div key={idx}></div>
+        ))}
+      </span>
+      <p>{text}</p>
     </li>
   );
 }

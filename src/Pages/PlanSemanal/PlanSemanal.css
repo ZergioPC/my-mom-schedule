@@ -1,3 +1,15 @@
+.no-asigned-yet > div {
+  padding: 10px 20px;
+  border-radius: 15px;
+}
+
+.no-asigned-yet > div ul {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  gap: 20px;
+}
+
 .PlanSemanal {
   display: flex;
   flex-direction: column;
@@ -12,6 +24,12 @@
   overflow-x: scroll;
 }
 
+.PlanLabels, .Plan-dia {
+  display: grid;
+  grid-template-rows: 60px repeat(4, 1fr);
+  gap: 10px;
+}
+
 .PlanLabels > h2, .Plan-dia > h2 {
   padding: 3px 10px;
   background-color: var(--primary-color);
@@ -19,12 +37,14 @@
   border-radius: 10px;
 }
 
+.Plan-dia > div { width: 200px; }
+.PlanLabels > div { font-weight: bold; }
+
 .PlanLabels > div, .Plan-dia > div {
   padding: 1.5rem;
   border-radius: 15px;
-  margin: 10px 0;
-  width: 200px;
 }
+
 .Plan-morning { background-color: var(--item-mooring);}
 .Plan-midday { background-color: var(--item-midday);}
 .Plan-afternoon { background-color: var(--item-afternoon);}
