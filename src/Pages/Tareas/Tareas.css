@@ -1,4 +1,4 @@
-.Ajustes > section {
+.Tareas > section {
   margin: 20px;
   padding: 10px 20px;
   display: flex;
@@ -10,6 +10,6 @@
   background-color: var(--card-background-color);
 }
 
-.Ajustes-btn {
+.Tareas-btn {
   margin: 5px;
 }

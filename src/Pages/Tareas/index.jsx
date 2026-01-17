@@ -1,12 +1,12 @@
 import React from "react";
-import "./Ajustes.css";
+import "./Tareas.css";
 
 import { useManageData } from "../../Hooks/useManageData";
 
 import { ItemsList } from "../../Components/ItemsList";
 import { ItemsItem } from "../../Components/ItemsItem";
 
-function Ajustes(){
+function Tareas(){
   const {
     meta, setMeta, tareas, 
     newTarea, rmTarea,
@@ -16,8 +16,8 @@ function Ajustes(){
 
   return (
     <>
-      <h1>Ajustes</h1>
-      <main className="Ajustes">
+      <h1>Tareas</h1>
+      <main className="Tareas">
         <section>
           <h2>Meta</h2>
           <p>Escribe el proposito actual que tengas</p>
@@ -31,7 +31,7 @@ function Ajustes(){
             />
           <button
             type="submit"
-            className="Ajustes-btn"
+            className="Tareas-btn"
             onClick={()=> setMeta(metaValue)}
           >Aceptar</button>
           </div>
@@ -54,7 +54,7 @@ function Ajustes(){
               ))}
             </ItemsList>
             <button
-              className="Ajustes-btn"
+              className="Tareas-btn"
               onClick={()=> newTarea()}
             >Agregar</button>
           </div>
@@ -64,4 +64,4 @@ function Ajustes(){
   );
 }
 
-export { Ajustes }; 
+export { Tareas }; 
