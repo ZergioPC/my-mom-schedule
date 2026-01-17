@@ -6,6 +6,7 @@
 .no-asigned-yet > div ul {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
   justify-content: center;
   gap: 20px;
 }
