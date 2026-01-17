@@ -18,7 +18,7 @@ function Tareas(){
     <>
       <h1>Tareas</h1>
       <main className="Tareas">
-        <section>
+        {/* <section>
           <h2>Meta</h2>
           <p>Escribe el proposito actual que tengas</p>
           <div>
@@ -35,7 +35,7 @@ function Tareas(){
             onClick={()=> setMeta(metaValue)}
           >Aceptar</button>
           </div>
-        </section>
+        </section> */}
         
         <section>
           <h2>Tareas</h2>

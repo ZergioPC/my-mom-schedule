@@ -65,7 +65,7 @@ function CronogramaModal({ onSave, onClose }) {
           />
 
           <div className="CronogramaModal-tareas">
-            <h3>Tareas <i>(opcional)</i></h3>
+            <h3>Objetivos especificos <i>(opcional)</i></h3>
             {tareas.map((tarea, index) => (
               <div key={index} className="CronogramaModal-tareas-item">
                 <input

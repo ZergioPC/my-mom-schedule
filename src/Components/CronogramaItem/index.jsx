@@ -35,7 +35,7 @@ function CronogramaItem({ item, counter, onEdit }){
           </>
         ) : (
           <>
-            <p><strong>Submeta:</strong> {item.submeta}</p>
+            <p><strong>Meta de la Semana:</strong> {item.submeta}</p>
             <p><strong>Tema:</strong> {item.tema}</p>
           </>
         )}
@@ -96,7 +96,7 @@ function CronogramaItem({ item, counter, onEdit }){
                   ]
                 }
               )}
-            >Agregar tarea</button>
+            >Agregar Objetivo</button>
           )}
         </div>
         {isEditing && (<button onClick={handleSave}>Save</button>)}
