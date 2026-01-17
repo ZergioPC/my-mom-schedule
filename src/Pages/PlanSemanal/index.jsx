@@ -24,7 +24,7 @@ const days = [
 ]
 
 function PlanSemanal(){
-  const {tareas, editTareaDay} = useManageData();
+  const {tareas, editTareaDay, editTareaComplete} = useManageData();
   const [sizes, setSizes] = React.useState(sizes_init);
 
   const handleDrop = (taskId, day, time) => {
@@ -43,9 +43,9 @@ function PlanSemanal(){
           >
             {tareas.filter(item =>
               item.day === dayTypes.none
-            ).map((item) => (
+            ).map((item,idx) => (
               <SemanaItem
-                key={item.id}
+                key={idx}
                 id={item.id}
                 text={item.txt}
               />
@@ -79,6 +79,8 @@ function PlanSemanal(){
                     key={idx}
                     id={item.id}
                     text={item.txt}
+                    complete={item.complete}
+                    onComplete={editTareaComplete}
                   />
                 ))}
               </SemanaList>
@@ -97,6 +99,8 @@ function PlanSemanal(){
                     key={idx}
                     id={item.id}
                     text={item.txt}
+                    complete={item.complete}
+                    onComplete={editTareaComplete}
                   />
                 ))}
               </SemanaList>
@@ -115,6 +119,8 @@ function PlanSemanal(){
                     key={idx}
                     id={item.id}
                     text={item.txt}
+                    complete={item.complete}
+                    onComplete={editTareaComplete}
                   />
                 ))}
               </SemanaList>
@@ -133,6 +139,8 @@ function PlanSemanal(){
                     key={idx}
                     id={item.id}
                     text={item.txt}
+                    complete={item.complete}
+                    onComplete={editTareaComplete}
                   />
                 ))}
               </SemanaList>

@@ -9,8 +9,24 @@
   box-shadow: 2px 2px 4px var(--shadow-color);
 }
 
+.SemanaItem.complete {
+  opacity: 50%;
+}
+
+.SemanaItem.complete > p {
+  text-decoration: line-through;
+  font-style: italic;
+}
+
 .SemanaItem > p {
   display: inline-block;
+  text-align: left;
+  width: 80%;
+}
+
+.SemanaItem > input[type="checkbox"] {
+  justify-self: baseline;
+  margin-left: 5px;
 }
 
 .SemanaItem-decoration {

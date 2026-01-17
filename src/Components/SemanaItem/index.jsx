@@ -1,7 +1,7 @@
 import React from "react";
 import "./SemanaItem.css"
 
-function SemanaItem({ text, id, onDragStart }) {
+function SemanaItem({ text, id, onDragStart, complete, onComplete }) {
   const handleDragStart = (e) => {
     e.dataTransfer.effectAllowed = 'move';
     e.dataTransfer.setData('text/plain', id.toString());
@@ -11,7 +11,7 @@ function SemanaItem({ text, id, onDragStart }) {
   return (
     <li
       draggable="true"
-      className="SemanaItem"
+      className={"SemanaItem " + (complete ? "complete": "")}
       onDragStart={handleDragStart}
     >
       <span className="SemanaItem-decoration">
@@ -20,6 +20,13 @@ function SemanaItem({ text, id, onDragStart }) {
         ))}
       </span>
       <p>{text}</p>
+      {onComplete && (
+        <input 
+          type="checkbox"
+          checked={complete}
+          onChange={()=> onComplete(id)}
+        />
+      )}
     </li>
   );
 }

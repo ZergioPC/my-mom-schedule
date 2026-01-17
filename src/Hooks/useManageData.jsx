@@ -74,11 +74,18 @@ function useManageData(){
     )))
   }
 
+  const editTareaComplete = (id)=>{
+    setTareas(tareas.map(item =>(
+      item.id === id ? {...item, complete: !item.complete} : item
+    )))
+  }
+
   return {
     meta, setMeta,
     tareas,
     newTarea, rmTarea,
-    editTareaDay, editTareaMatriz, editTareaValue
+    editTareaDay, editTareaMatriz,
+    editTareaValue, editTareaComplete
   }
 }
 
