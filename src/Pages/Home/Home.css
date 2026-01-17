@@ -1,9 +1,11 @@
 .Home {
   display: grid;
-  grid-template-columns: 3fr 1fr;
+  grid-template-columns: 4fr 1fr;
   grid-template-rows: 1fr 5fr;
   gap: 2rem;
 }
+
+/* MARK: CURRENT */
 
 .Home-current {
   grid-row: 1/2;
@@ -69,6 +71,8 @@
   font-style: italic;
 }
 
+/* MARK: SEMANA */
+
 .Home-semana {
   grid-row: 2/3;
   grid-column: 1/2;
@@ -80,13 +84,43 @@
 
 .Home-semana-container {
   display: grid;
-  grid-template-columns: repeat(4,1fr);
+  grid-template-columns: repeat(7,1fr);
   gap: 1rem;
 }
-.Home-semana-container li {
-  text-align: left;
+.Home-semana-container ul {
   margin: 10px 0;
+  padding: 5px;
+  border-width: 4px;
+  border-style: dotted;
+  border-radius: 10px;
 }
+
+.Home-semana-morning {border-color: var(--item-mooring);}
+.Home-semana-midday {border-color: var(--item-midday);}
+.Home-semana-afternoon {border-color: var(--item-afternoon);}
+.Home-semana-night {border-color: var(--item-night);}
+
+.Home-semana-container li {
+  list-style: none;
+  box-sizing: content-box;
+  padding: 3px 10px;
+  margin: 10px 0;
+  text-align: left;
+  border-radius: 5px;
+}
+
+.Home-semana-morning > li {background-color: var(--item-mooring);}
+.Home-semana-midday > li {background-color: var(--item-midday);}
+.Home-semana-afternoon > li {background-color: var(--item-afternoon);}
+.Home-semana-night > li {background-color: var(--item-night);}
+
+.Home-semana-check {
+  text-decoration: line-through;
+  font-style: italic;
+  opacity: 60%;
+}
+
+/* MARK: MATRIZ */
 
 .Home-matriz {
   grid-row: 1/3;
