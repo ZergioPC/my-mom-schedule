@@ -21,6 +21,14 @@ const dayTypes = {
   domingo: 6,
 }
 
+const timeTypes = {
+  none: 0,
+  morning: 1,
+  midday: 2,
+  afternoon: 3,
+  night: 4,
+}
+
 // tarea: {id, txt, complete, day, matriz}
 function useManageData(){
   const [meta, setMeta] = useLocalStorage("Organizador-Meta","");
@@ -29,7 +37,14 @@ function useManageData(){
 
   const newTarea = ()=>{
     setTareas([...tareas, 
-      {id:counter, txt:"", complete:false, day:dayTypes.none, matriz:matrizTypes.none}
+      {
+        id:counter, 
+        txt:"", 
+        complete:false, 
+        day:dayTypes.none,
+        time: timeTypes.none, 
+        matriz:matrizTypes.none
+      }
     ]);
     setCounter([prev => prev + 1]);
   }
@@ -64,4 +79,4 @@ function useManageData(){
   }
 }
 
-export { useManageData, dayTypes, matrizTypes };
+export { useManageData, dayTypes, matrizTypes, timeTypes };

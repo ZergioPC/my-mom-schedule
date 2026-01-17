@@ -10,6 +10,10 @@
   --border-color: #bdc3c7;
   --red-btn: #be2f47;
   --green-btn: #2ab15e;
+  --item-mooring: #F1BA88;
+  --item-midday: #e27eb5;
+  --item-afternoon: #81E7AF;
+  --item-night: #03A791;
 
   font-family: var(--font-family);
   line-height: 1.5;

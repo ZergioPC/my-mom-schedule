@@ -1,0 +1,8 @@
+.SemanaList {
+  border: dotted 4px;
+}
+
+.SemanaList-morning {border-color: var(--item-mooring);}
+.SemanaList-midday {border-color: var(--item-midday);}
+.SemanaList-afternoon {border-color: var(--item-afternoon);}
+.SemanaList-night {border-color: var(--item-night);}
