@@ -1,6 +1,8 @@
 import React from "react";
 import "./PlanSemanal.css";
+
 import { useManageData, dayTypes, timeTypes } from "../../Hooks/useManageData";
+
 import { SemanaList } from "../../Components/SemanaList";
 import { SemanaItem } from "../../Components/SemanaItem";
 
@@ -25,17 +27,26 @@ function PlanSemanal(){
   const {tareas, editTareaDay} = useManageData();
   const [sizes, setSizes] = React.useState(sizes_init);
 
+  const handleDrop = (taskId, day, time) => {
+    editTareaDay(taskId, day, time);
+  };
+
   return(
     <>
       <h1>Planeador Semanal</h1>
       <main className="PlanSemanal">
         <section className="no-asigned-yet">
-          <SemanaList>
-            {tareas.filter(item => 
+          <SemanaList
+            day={dayTypes.none}
+            time={timeTypes.none}
+            onDrop={handleDrop}
+          >
+            {tareas.filter(item =>
               item.day === dayTypes.none
-            ).map((item,idx)=>(
-              <SemanaItem 
-                key={idx}
+            ).map((item) => (
+              <SemanaItem
+                key={item.id}
+                id={item.id}
                 text={item.txt}
               />
             ))}
@@ -57,12 +68,16 @@ function PlanSemanal(){
               <SemanaList
                 className="morning"
                 size={sizes.morning}
+                day={day.value}
+                time={timeTypes.morning}
+                onDrop={handleDrop}
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.morning
                 ).map((item,idx)=>(
                   <SemanaItem 
                     key={idx}
+                    id={item.id}
                     text={item.txt}
                   />
                 ))}
@@ -71,12 +86,16 @@ function PlanSemanal(){
               <SemanaList
                 className="midday"
                 size={sizes.midday}
+                day={day.value}
+                time={timeTypes.midday}
+                onDrop={handleDrop}
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.midday
                 ).map((item,idx)=>(
                   <SemanaItem 
                     key={idx}
+                    id={item.id}
                     text={item.txt}
                   />
                 ))}
@@ -85,12 +104,16 @@ function PlanSemanal(){
               <SemanaList
                 className="afternoon"
                 size={sizes.after}
+                day={day.value}
+                time={timeTypes.afternoon}
+                onDrop={handleDrop}
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.afternoon
                 ).map((item,idx)=>(
                   <SemanaItem 
                     key={idx}
+                    id={item.id}
                     text={item.txt}
                   />
                 ))}
@@ -99,12 +122,16 @@ function PlanSemanal(){
               <SemanaList
                 className="night"
                 size={sizes.night}
+                day={day.value}
+                time={timeTypes.night}
+                onDrop={handleDrop}
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.night
                 ).map((item,idx)=>(
                   <SemanaItem 
                     key={idx}
+                    id={item.id}
                     text={item.txt}
                   />
                 ))}

@@ -67,7 +67,7 @@ function useManageData(){
 
   const editTareaDay = (id, day, time)=>{
     setTareas(tareas.map(item =>(
-      item.id === id ? {...item, day:value, time:time} : item
+      item.id === id ? {...item, day:day, time:time} : item
     )))
   }
 
