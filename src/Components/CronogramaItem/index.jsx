@@ -103,6 +103,7 @@ function CronogramaItem({ item, counter, onEdit }){
                       day: dayTypes.none,
                       time: timeTypes.none,
                       matriz: matrizTypes.none,
+                      createdWeek: item.id,
                     },
                   ]
                 }

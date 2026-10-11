@@ -6,7 +6,13 @@ export default function useCronograma(){
   const addCronograma =  (item)=>{
     setCronograma(prev => {
       const id = prev.reduce((max, week) => Math.max(max, week.id ?? 0), 0) + 1;
-      return [...prev, {...item, id}];
+      return [...prev, {
+        ...item,
+        id,
+        tareas: (item.tareas ?? []).map(tarea => (
+          tarea.createdWeek ? tarea : {...tarea, createdWeek: id}
+        ))
+      }];
     });
   };
 
