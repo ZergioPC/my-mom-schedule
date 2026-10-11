@@ -7,6 +7,7 @@ import { Home } from '../Pages/Home';
 import { Matriz } from '../Pages/Matriz';
 import { PlanSemanal } from '../Pages/PlanSemanal';
 import { Cronograma } from '../Pages/Cronograma';
+import { Historial } from '../Pages/Historial';
 import useCronogramaRollover from '../Hooks/useCronogramaRollover';
 
 const rutas = [
@@ -14,6 +15,7 @@ const rutas = [
   {to: "/matriz", text: "Matriz"},
   {to: "/semana", text: "Planeador"},
   {to: "/cronograma", text: "Cronograma"},
+  {to: "/historial", text: "Historial"},
 ];
 
 //Agregar Horario
@@ -30,6 +32,7 @@ function App() {
         <Route path='/matriz' element={<Matriz />} />
         <Route path='/semana' element={<PlanSemanal />} />
         <Route path='/cronograma' element={<Cronograma />} />
+        <Route path='/historial' element={<Historial />} />
       </Routes>
     </>
   )

@@ -1,0 +1,48 @@
+.Historial {
+  width: min(720px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.Historial-grupo {
+  background-color: var(--card-background-color);
+  padding: 1.25rem;
+  border-radius: 0.5rem;
+  box-shadow: 0 2px 4px var(--shadow-color);
+}
+
+.Historial-grupo h2 {
+  margin: 0 0 0.75rem;
+}
+
+.Historial-lista {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.Historial-item {
+  border-bottom: 1px solid var(--border-color, #ddd);
+  padding-bottom: 0.5rem;
+}
+
+.Historial-item:last-child {
+  border-bottom: none;
+  padding-bottom: 0;
+}
+
+.Historial-txt {
+  margin: 0;
+  font-weight: 600;
+}
+
+.Historial-meta {
+  margin: 0.25rem 0 0;
+  font-size: 0.85rem;
+  color: var(--muted-color, #666);
+}
