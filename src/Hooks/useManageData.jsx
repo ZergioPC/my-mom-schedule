@@ -33,16 +33,17 @@ const timeTypes = {
 function useManageData(){
   const [meta, setMeta] = useLocalStorage("Organizador-Meta","");
   const [tareas, setTareas] = useLocalStorage("Organizador-Tareas",[])
-  const [counter, setCounter] = React.useState(tareas.length + 1 ?? 1);
+  const nextId = React.useRef();
 
-  React.useEffect(()=>{
-    setCounter(tareas.length + 1);
-  },[tareas]);
+  if (nextId.current === undefined) {
+    nextId.current = tareas.reduce((max, tarea) => Math.max(max, tarea.id ?? 0), 0) + 1;
+  }
 
   const newTarea = ()=>{
+    const id = nextId.current++;
     setTareas([...tareas, 
       {
-        id:counter, 
+        id, 
         txt:"", 
         complete:false, 
         day:dayTypes.none,

@@ -6,7 +6,11 @@ export default function useCronograma(){
   const [startWeek, setStartWeek] = useLocalStorage("Start",""); //2026-01-24
 
   const [cronograma, setCronograma] = React.useState(save);
-  const [counter, setCounter] = React.useState(cronograma.length + 1 || 1);
+  const nextId = React.useRef();
+
+  if (nextId.current === undefined) {
+    nextId.current = cronograma.reduce((max, item) => Math.max(max, item.id ?? 0), 0) + 1;
+  }
 
   React.useEffect(()=>{
     setSave(cronograma);
@@ -15,17 +19,14 @@ export default function useCronograma(){
   const addCronograma =  (item)=>{
     setCronograma([
       ...cronograma,
-      {...item, id: counter}
+      {...item, id: nextId.current++}
     ]);
-    setCounter(prev=> prev + 1);
   };
 
   const rmLastCronograma = ()=>{
     setCronograma(
       cronograma.slice(0, -1)
     );
-
-    setCounter(prev=> prev - 1);
   };
 
   const editCronograma = (edit)=>{
