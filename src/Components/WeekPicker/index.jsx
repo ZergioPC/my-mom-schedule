@@ -5,7 +5,7 @@ function WeekPicker({ date, setDate }) {
   const handleChange = (e) => {
     const selectedDate = new Date(e.target.value);
 
-    // Get start of the week (Monday)
+    // Inicio de la semana (domingo, weekStartsOn: 0)
     const weekStart = startOfWeek(selectedDate, { weekStartsOn: 0 });
 
     const formattedDate = format(weekStart, "yyyy-MM-dd");
@@ -14,7 +14,7 @@ function WeekPicker({ date, setDate }) {
 
   return (
     <div className="WeekPicker">
-      <input type="date" onChange={handleChange} />
+      <input type="date" value={date} onChange={handleChange} />
     </div>
   );
 }

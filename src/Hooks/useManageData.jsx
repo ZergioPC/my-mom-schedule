@@ -1,5 +1,3 @@
-import React from "react";
-
 import useLocalStorage from "./useLocalStorage";
 
 const matrizTypes = {
@@ -33,50 +31,47 @@ const timeTypes = {
 function useManageData(){
   const [meta, setMeta] = useLocalStorage("Organizador-Meta","");
   const [tareas, setTareas] = useLocalStorage("Organizador-Tareas",[])
-  const nextId = React.useRef();
-
-  if (nextId.current === undefined) {
-    nextId.current = tareas.reduce((max, tarea) => Math.max(max, tarea.id ?? 0), 0) + 1;
-  }
 
   const newTarea = ()=>{
-    const id = nextId.current++;
-    setTareas([...tareas, 
-      {
-        id, 
-        txt:"", 
-        complete:false, 
-        day:dayTypes.none,
-        time: timeTypes.none, 
-        matriz:matrizTypes.none
-      }
-    ]);
+    setTareas(prev => {
+      const id = prev.reduce((max, tarea) => Math.max(max, tarea.id ?? 0), 0) + 1;
+      return [...prev,
+        {
+          id,
+          txt:"",
+          complete:false,
+          day:dayTypes.none,
+          time: timeTypes.none,
+          matriz:matrizTypes.none
+        }
+      ];
+    });
   }
 
   const rmTarea = (id)=>{
-    setTareas(tareas.filter(item => item.id !== id));
+    setTareas(prev => prev.filter(item => item.id !== id));
   }
 
   const editTareaValue = (id,value)=>{
-    setTareas(tareas.map(item =>(
+    setTareas(prev => prev.map(item =>(
       item.id === id ? {...item, txt:value} : item
     )))
   }
 
   const editTareaMatriz = (id, quarter)=>{
-    setTareas(tareas.map(item =>(
+    setTareas(prev => prev.map(item =>(
       item.id === id ? {...item, matriz:quarter} : item
     )))
   }
 
   const editTareaDay = (id, day, time)=>{
-    setTareas(tareas.map(item =>(
+    setTareas(prev => prev.map(item =>(
       item.id === id ? {...item, day:day, time:time} : item
     )))
   }
 
   const editTareaComplete = (id)=>{
-    setTareas(tareas.map(item =>(
+    setTareas(prev => prev.map(item =>(
       item.id === id ? {...item, complete: !item.complete} : item
     )))
   }

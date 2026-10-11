@@ -25,7 +25,7 @@ const days = [
 
 function PlanSemanal(){
   const {tareas, editTareaDay, editTareaComplete} = useManageData();
-  const [sizes, setSizes] = React.useState(sizes_init);
+  const [sizes] = React.useState(sizes_init);
 
   const handleDrop = (taskId, day, time) => {
     editTareaDay(taskId, day, time);
@@ -107,7 +107,7 @@ function PlanSemanal(){
 
               <SemanaList
                 className="afternoon"
-                size={sizes.after}
+                size={sizes.afternoon}
                 day={day.value}
                 time={timeTypes.afternoon}
                 onDrop={handleDrop}

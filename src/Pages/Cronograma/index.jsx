@@ -28,13 +28,15 @@ function Cronograma(){
 
   const [modal,setModal] = React.useState(false);
 
-  React.useEffect(()=>{
+  const commitMeta = ()=>{
     setMeta(valueMeta);
-  },[editMeta]);
+    setEditMeta(false);
+  };
 
-  React.useEffect(()=>{
+  const commitSemana = ()=>{
     setSemana(valueSemana);
-  },[editSemana]);
+    setEditSemana(false);
+  };
 
   return (
     <div className="Cronograma">
@@ -53,7 +55,7 @@ function Cronograma(){
               onChange={e => setValueMeta(e.target.value)}
             />
             <button
-              onClick={()=> setEditMeta(false)}
+              onClick={commitMeta}
             >Ok</button>
           </>
         ) : (
@@ -76,7 +78,7 @@ function Cronograma(){
             />
             <button
               disabled={valueSemana.length === 0}
-              onClick={()=> setEditSemana(false)}
+              onClick={commitSemana}
             >{valueSemana.length !== 0 ? "Ok" : "-"}</button>
           </>
         ) : (

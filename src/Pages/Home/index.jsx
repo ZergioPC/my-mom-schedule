@@ -39,10 +39,11 @@ function Home(){
   const noImportanteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.noImportante);
 
   React.useEffect(()=>{
-    setCurrent(cronograma.find(item =>
+    const current = cronograma.find(item =>
       idMatchToWeek(item, startWeek)
-    ));
-  },[]);
+    );
+    if (current) setCurrent(current);
+  },[cronograma, startWeek, setCurrent]);
 
   return(
     <>
