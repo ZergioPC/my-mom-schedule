@@ -1,4 +1,5 @@
 import useLocalStorage from "./useLocalStorage";
+import idMatchToWeek from "../Utils/idMatchToWeek";
 
 const matrizTypes = {
   none: 0,
@@ -27,61 +28,56 @@ const timeTypes = {
   night: 4,
 }
 
-// tarea: {id, txt, complete, day, matriz}
-function useManageData(){
-  const [meta, setMeta] = useLocalStorage("Organizador-Meta","");
-  const [tareas, setTareas] = useLocalStorage("Organizador-Tareas",[])
+const normalizeTarea = (tarea) => ({
+  ...tarea,
+  complete: tarea.complete ?? false,
+  day: tarea.day ?? dayTypes.none,
+  time: tarea.time ?? timeTypes.none,
+  matriz: tarea.matriz ?? matrizTypes.none,
+});
 
-  const newTarea = ()=>{
-    setTareas(prev => {
-      const id = prev.reduce((max, tarea) => Math.max(max, tarea.id ?? 0), 0) + 1;
-      return [...prev,
-        {
-          id,
-          txt:"",
-          complete:false,
-          day:dayTypes.none,
-          time: timeTypes.none,
-          matriz:matrizTypes.none
-        }
-      ];
+// tarea: {id, txt, complete, day, time, matriz}
+// Las tareas se leen y modifican siempre sobre la semana actual del cronograma.
+function useManageData(){
+  const [cronograma, setCronograma] = useLocalStorage("Cronograma", []);
+  const [startWeek] = useLocalStorage("Start", "");
+
+  const currentWeek = cronograma.find(item => idMatchToWeek(item, startWeek));
+  const tareas = (currentWeek?.tareas ?? []).map(normalizeTarea);
+
+  const editCurrentWeekTareas = (updater)=>{
+    setCronograma(prev => {
+      const idx = prev.findIndex(item => idMatchToWeek(item, startWeek));
+      if (idx === -1) return prev;
+      return prev.map((item, i) => (
+        i === idx ? {...item, tareas: updater(item.tareas ?? [])} : item
+      ));
     });
   }
 
-  const rmTarea = (id)=>{
-    setTareas(prev => prev.filter(item => item.id !== id));
-  }
-
-  const editTareaValue = (id,value)=>{
-    setTareas(prev => prev.map(item =>(
-      item.id === id ? {...item, txt:value} : item
-    )))
-  }
-
   const editTareaMatriz = (id, quarter)=>{
-    setTareas(prev => prev.map(item =>(
+    editCurrentWeekTareas(prev => prev.map(item =>(
       item.id === id ? {...item, matriz:quarter} : item
     )))
   }
 
   const editTareaDay = (id, day, time)=>{
-    setTareas(prev => prev.map(item =>(
+    editCurrentWeekTareas(prev => prev.map(item =>(
       item.id === id ? {...item, day:day, time:time} : item
     )))
   }
 
   const editTareaComplete = (id)=>{
-    setTareas(prev => prev.map(item =>(
+    editCurrentWeekTareas(prev => prev.map(item =>(
       item.id === id ? {...item, complete: !item.complete} : item
     )))
   }
 
   return {
-    meta, setMeta,
     tareas,
-    newTarea, rmTarea,
+    currentWeek,
     editTareaDay, editTareaMatriz,
-    editTareaValue, editTareaComplete
+    editTareaComplete
   }
 }
 

@@ -2,14 +2,14 @@ import "./CronogramaModal.css";
 
 import { useState } from "react";
 import { Modal } from "../Modal";
-import { dayTypes, matrizTypes } from "../../Hooks/useManageData";
+import { dayTypes, matrizTypes, timeTypes } from "../../Hooks/useManageData";
 
 function CronogramaModal({ onSave, onClose }) {
   const [submeta, setSubmeta] = useState("");
   const [tema, setTema] = useState("");
   const [counter, setCounter] = useState(2);
   const [tareas, setTareas] = useState([
-    { txt: "", complete: false, day: dayTypes.none, matriz: matrizTypes.none, id: 1 }
+    { txt: "", complete: false, day: dayTypes.none, time: timeTypes.none, matriz: matrizTypes.none, id: 1 }
   ]);
 
   const addTarea = () => {
@@ -17,6 +17,7 @@ function CronogramaModal({ onSave, onClose }) {
       txt: "",
       complete: false,
       day: dayTypes.none,
+      time: timeTypes.none,
       matriz: matrizTypes.none,
       id: counter,
     }]);

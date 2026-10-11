@@ -1,6 +1,6 @@
 import React from "react";
 import "./CronogramaItem.css";
-import { dayTypes, matrizTypes } from "../../Hooks/useManageData";
+import { dayTypes, matrizTypes, timeTypes } from "../../Hooks/useManageData";
 
 function CronogramaItem({ item, counter, onEdit }){
   const [isEditing, setIsEditing] = React.useState(false);
@@ -101,6 +101,7 @@ function CronogramaItem({ item, counter, onEdit }){
                       txt: "",
                       complete: false,
                       day: dayTypes.none,
+                      time: timeTypes.none,
                       matriz: matrizTypes.none,
                     },
                   ]

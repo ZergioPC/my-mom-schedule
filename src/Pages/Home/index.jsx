@@ -1,19 +1,7 @@
 import "./Home.css"
 import React from "react";
 
-import useLocalStorage from "../../Hooks/useLocalStorage";
-import useCronograma from "../../Hooks/useCronograma";
-
-import idMatchToWeek from "../../Utils/idMatchToWeek";
-
 import { useManageData, dayTypes, timeTypes, matrizTypes } from "../../Hooks/useManageData";
-
-const currentInit = {
-    "id": 0,
-    "submeta": "",
-    "tema": "",
-    "tareas": [],
-}
 
 const days = [
   { label: "Lunes", value: dayTypes.lunes },
@@ -26,24 +14,12 @@ const days = [
 ]
 
 function Home(){
-  const {tareas} = useManageData();
-
-  const [startWeek, _ ] = useLocalStorage("Start","");
-  const [currentWeekData, setCurrent ] = useLocalStorage("CurrentWeek", currentInit);
-
-  const { cronograma } = useCronograma();
+  const {tareas, currentWeek} = useManageData();
 
   const urgenteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.urgente);
   const noUrgenteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.noUrgente);
   const importanteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.importante);
   const noImportanteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.noImportante);
-
-  React.useEffect(()=>{
-    const current = cronograma.find(item =>
-      idMatchToWeek(item, startWeek)
-    );
-    if (current) setCurrent(current);
-  },[cronograma, startWeek, setCurrent]);
 
   return(
     <>
@@ -54,21 +30,21 @@ function Home(){
         <section className="Home-current">
           <div className="Home-current-title">
             <h2>{"Semana "}
-              {currentWeekData && String(currentWeekData.id).padStart(2,"0")}
+              {currentWeek && String(currentWeek.id).padStart(2,"0")}
               </h2>
-            {currentWeekData ? (
+            {currentWeek ? (
             <>
-              <p>Meta Semanal: <b>{currentWeekData.submeta}</b></p>
-              <span>{currentWeekData.tema}</span>
+              <p>Meta Semanal: <b>{currentWeek.submeta}</b></p>
+              <span>{currentWeek.tema}</span>
             </>
           ) : (
             <p>No se ha creado nada para esta semana</p>
           )}
           </div>
-          {currentWeekData && (
+          {currentWeek && (
             <div className="Home-current-items">
               <ul>
-                {currentWeekData.tareas.map((item, idx) =>
+                {currentWeek.tareas.map((item, idx) =>
                   <li
                    key={item.id ?? idx}
                    className={item.complete ? "tarea-complete" : ""}
