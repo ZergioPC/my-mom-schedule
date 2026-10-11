@@ -2,7 +2,7 @@ import useLocalStorage from "./useLocalStorage";
 
 const semanalInit = {
   hogar: [],
-  acaademia: [],
+  academia: [],
   laboral: [],
 }
 
@@ -24,13 +24,13 @@ export default function usePlanSemanal(){
   );
 
   // MARK: Academia
-  const addAcademia = (item)=> updateList("acaademia", list => [...list, item]);
+  const addAcademia = (item)=> updateList("academia", list => [...list, item]);
 
-  const editAcademia = (id, text)=> updateList("acaademia", list =>
+  const editAcademia = (id, text)=> updateList("academia", list =>
     list.map(item => item.id === id ? {...item, txt: text} : item)
   );
 
-  const rmAcademia = (itemId)=> updateList("acaademia", list =>
+  const rmAcademia = (itemId)=> updateList("academia", list =>
     list.filter(item => item.id !== itemId)
   );
 

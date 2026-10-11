@@ -8,44 +8,24 @@ import { ItemsItem } from "../../Components/ItemsItem";
 
 function Tareas(){
   const {
-    meta, setMeta, tareas, 
+    tareas, 
     newTarea, rmTarea,
     editTareaValue,
   } = useManageData();
-  const [metaValue, setMetaValue] = React.useState(meta);
 
   return (
     <>
       <h1>Tareas</h1>
       <main className="Tareas">
-        {/* <section>
-          <h2>Meta</h2>
-          <p>Escribe el proposito actual que tengas</p>
-          <div>
-            <input
-              id="Meta-Value"
-              type="text" 
-              placeholder="Escribe tu meta..."
-              value={metaValue}
-              onChange={e => setMetaValue(e.target.value)}
-            />
-          <button
-            type="submit"
-            className="Tareas-btn"
-            onClick={()=> setMeta(metaValue)}
-          >Aceptar</button>
-          </div>
-        </section> */}
-        
         <section>
           <h2>Tareas</h2>
           <p>Agrega las tareas que debas completar</p>
 
           <div>
             <ItemsList message={"No hay tareas agregadas"}>
-              {tareas.map((item, idx)=> (
+              {tareas.map((item)=> (
                 <ItemsItem 
-                  key={idx}
+                  key={item.id}
                   id={item.id}
                   text={item.txt}
                   onDelete={rmTarea}

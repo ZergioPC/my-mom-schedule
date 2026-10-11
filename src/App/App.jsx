@@ -1,6 +1,5 @@
 import './App.css'
 
-import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom'
 
 import { Header } from '../Components/Header';
@@ -10,21 +9,17 @@ import { PlanSemanal } from '../Pages/PlanSemanal';
 import { Cronograma } from '../Pages/Cronograma';
 import { Tareas } from '../Pages/Tareas';
 
-import useMatrizCtx from '../Hooks/useMatrizCtx';
-
 const rutas = [
   {to: "/", text: "Home"},
   {to: "/matriz", text: "Matriz"},
   {to: "/semana", text: "Planeador"},
   {to: "/cronograma", text: "Cronograma"},
-  {to: "/Tareas", text: "Tareas"},
+  {to: "/tareas", text: "Tareas"},
 ];
 
 //Agregar Horario
 
 function App() {
-  const { matriz } = useMatrizCtx();
-
   return (
     <>
       <Header rutas={rutas} />
@@ -34,7 +29,7 @@ function App() {
         <Route path='/matriz' element={<Matriz />} />
         <Route path='/semana' element={<PlanSemanal />} />
         <Route path='/cronograma' element={<Cronograma />} />
-        <Route path='/Tareas' element={<Tareas />}/>
+        <Route path='/tareas' element={<Tareas />}/>
       </Routes>
     </>
   )

@@ -5,19 +5,7 @@ import { useState } from "react";
 import { MatrixQuadrant } from "../../Components/MatrixQuadrant";
 import { MatrixItem } from "../../Components/MatrixItem";
 
-import { useManageData } from "../../Hooks/useManageData";
-
-// Import your matrizTypes constant
-// import { matrizTypes } from "../../Constants/matrizTypes";
-
-// If you don't have it as a constant, define it here:
-const matrizTypes = {
-  none: 0,
-  urgente: 1,
-  noUrgente: 2,
-  importante: 3,
-  noImportante: 4,
-};
+import { useManageData, matrizTypes } from "../../Hooks/useManageData";
 
 function Matriz() {
   const {
@@ -26,7 +14,6 @@ function Matriz() {
   } = useManageData();
 
   const [draggedItem, setDraggedItem] = useState(null);
-  const [draggedFrom, setDraggedFrom] = useState(null);
 
   // Filter tasks by matriz type
   const pendingItems = tareas.filter(tarea => tarea.matriz === matrizTypes.none);
@@ -35,9 +22,8 @@ function Matriz() {
   const importanteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.importante);
   const noImportanteItems = tareas.filter(tarea => tarea.matriz === matrizTypes.noImportante);
 
-  const handleDragStart = (e, item, quadrant) => {
+  const handleDragStart = (e, item) => {
     setDraggedItem(item);
-    setDraggedFrom(quadrant);
     e.dataTransfer.effectAllowed = 'move';
   };
 
@@ -64,7 +50,6 @@ function Matriz() {
       editTareaMatriz(draggedItem.id, newMatrizType);
       
       setDraggedItem(null);
-      setDraggedFrom(null);
     }
   };
 

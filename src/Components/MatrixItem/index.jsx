@@ -12,6 +12,7 @@ function MatrixItem({ item, quadrant, onDragStart, onDelete, showDelete }) {
       {showDelete && (
         <button
           className="MatrixItem-delete"
+          aria-label="Quitar de la matriz"
           onClick={() => onDelete(item.id)}
         >
           ✕

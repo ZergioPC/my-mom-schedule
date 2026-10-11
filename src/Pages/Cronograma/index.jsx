@@ -33,8 +33,18 @@ function Cronograma(){
     setEditMeta(false);
   };
 
+  const cancelMeta = ()=>{
+    setValueMeta(meta);
+    setEditMeta(false);
+  };
+
   const commitSemana = ()=>{
     setSemana(valueSemana);
+    setEditSemana(false);
+  };
+
+  const cancelSemana = ()=>{
+    setValueSemana(semana);
     setEditSemana(false);
   };
 
@@ -57,6 +67,10 @@ function Cronograma(){
             <button
               onClick={commitMeta}
             >Ok</button>
+            <button
+              className="button-red"
+              onClick={cancelMeta}
+            >Cancel</button>
           </>
         ) : (
           <>
@@ -80,10 +94,17 @@ function Cronograma(){
               disabled={valueSemana.length === 0}
               onClick={commitSemana}
             >{valueSemana.length !== 0 ? "Ok" : "-"}</button>
+            <button
+              className="button-red"
+              onClick={cancelSemana}
+            >Cancel</button>
           </>
         ) : (
           <>
             <p>{valueSemana}</p>
+            <button
+              onClick={()=> setEditSemana(true)}
+            >Editar</button>
           </>
         )}
       </div>
@@ -97,7 +118,7 @@ function Cronograma(){
         ) : (
           <ol>
             {cronograma.map((item, idx) =>
-              <li key={idx}>
+              <li key={item.id}>
                 <CronogramaItem 
                   counter={idx + 1}
                   item={item}

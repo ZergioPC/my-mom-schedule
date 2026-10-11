@@ -2,21 +2,22 @@ import "./CronogramaModal.css";
 
 import { useState } from "react";
 import { Modal } from "../Modal";
+import { dayTypes, matrizTypes } from "../../Hooks/useManageData";
 
 function CronogramaModal({ onSave, onClose }) {
   const [submeta, setSubmeta] = useState("");
   const [tema, setTema] = useState("");
   const [counter, setCounter] = useState(2);
   const [tareas, setTareas] = useState([
-    { txt: "", complete: false, day: null, matriz: null, id: 1 }
+    { txt: "", complete: false, day: dayTypes.none, matriz: matrizTypes.none, id: 1 }
   ]);
 
   const addTarea = () => {
     setTareas(prev => [...prev, { 
       txt: "",
       complete: false,
-      day: null,
-      matriz: null,
+      day: dayTypes.none,
+      matriz: matrizTypes.none,
       id: counter,
     }]);
     setCounter(prev => prev + 1)
@@ -67,7 +68,7 @@ function CronogramaModal({ onSave, onClose }) {
           <div className="CronogramaModal-tareas">
             <h3>Objetivos especificos <i>(opcional)</i></h3>
             {tareas.map((tarea, index) => (
-              <div key={index} className="CronogramaModal-tareas-item">
+              <div key={tarea.id} className="CronogramaModal-tareas-item">
                 <input
                   type="text"
                   placeholder={`Tarea ${index + 1}`}

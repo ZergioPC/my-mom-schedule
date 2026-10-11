@@ -70,7 +70,7 @@ function Home(){
               <ul>
                 {currentWeekData.tareas.map((item, idx) =>
                   <li
-                   key={idx}
+                   key={item.id ?? idx}
                    className={item.complete ? "tarea-complete" : ""}
                   ><span>{item.txt}</span></li>
                 )}
@@ -84,16 +84,16 @@ function Home(){
           <h2>Pendientes de la semana</h2>
           
           <div className="Home-semana-container">
-            {days.map((day, idx) => (
-              <article key={idx}>
+            {days.map((day) => (
+              <article key={day.value}>
                 <h2>{day.label}</h2>
                 
                 <ul className="Home-semana-morning">
                   {tareas.filter(item => 
                     item.day === day.value && item.time === timeTypes.morning
-                  ).map((item,idx)=>(
+                  ).map((item)=>(
                     <li 
-                      key={idx}
+                      key={item.id}
                       className={item.complete ? "Home-semana-check" : ""}
                     >{item.txt}</li>
                   ))}
@@ -102,9 +102,9 @@ function Home(){
                 <ul className="Home-semana-midday">
                   {tareas.filter(item => 
                     item.day === day.value && item.time === timeTypes.midday
-                  ).map((item,idx)=>(
+                  ).map((item)=>(
                     <li 
-                      key={idx}
+                      key={item.id}
                       className={item.complete ? "Home-semana-check" : ""}
                     >{item.txt}</li>
                   ))}
@@ -113,9 +113,9 @@ function Home(){
                 <ul className="Home-semana-afternoon">
                   {tareas.filter(item => 
                     item.day === day.value && item.time === timeTypes.afternoon
-                  ).map((item,idx)=>(
+                  ).map((item)=>(
                     <li 
-                      key={idx}
+                      key={item.id}
                       className={item.complete ? "Home-semana-check" : ""}
                     >{item.txt}</li>
                   ))}
@@ -124,9 +124,9 @@ function Home(){
                 <ul className="Home-semana-night">
                   {tareas.filter(item => 
                     item.day === day.value && item.time === timeTypes.night
-                  ).map((item,idx)=>(
+                  ).map((item)=>(
                     <li 
-                      key={idx}
+                      key={item.id}
                       className={item.complete ? "Home-semana-check" : ""}
                     >{item.txt}</li>
                   ))}
@@ -146,8 +146,8 @@ function Home(){
               <p>No hay urgencias de mucha importancia</p>
             ) : (
             <ul>
-              {urgenteItems.map((item,idx)=>(
-                <li key={idx}>{item.txt}</li>
+              {urgenteItems.map((item)=>(
+                <li key={item.id}>{item.txt}</li>
               ))}
             </ul>
             )}
@@ -158,8 +158,8 @@ function Home(){
               <p>No hay urgencias de poca importancia</p>
             ) : (
             <ul>
-              {noUrgenteItems.map((item,idx)=>(
-                <li key={idx}>{item.txt}</li>
+              {noUrgenteItems.map((item)=>(
+                <li key={item.id}>{item.txt}</li>
               ))}
             </ul>
             )}
@@ -170,8 +170,8 @@ function Home(){
               <p>No hay tareas importantes no urgentes</p>
             ) : (
             <ul>
-              {importanteItems.map((item,idx)=>(
-                <li key={idx}>{item.txt}</li>
+              {importanteItems.map((item)=>(
+                <li key={item.id}>{item.txt}</li>
               ))}
             </ul>
             )}
@@ -182,8 +182,8 @@ function Home(){
               <p>No hay tareas ni urgentes ni importantes</p>
             ) : (
             <ul>
-              {noImportanteItems.map((item,idx)=>(
-                <li key={idx}>{item.txt}</li>
+              {noImportanteItems.map((item)=>(
+                <li key={item.id}>{item.txt}</li>
               ))}
             </ul>
             )}

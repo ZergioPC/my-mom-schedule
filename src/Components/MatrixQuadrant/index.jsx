@@ -18,9 +18,9 @@ function MatrixQuadrant({
       className={`MatrixQuadrant ${className}`}
     >
       <ul>
-        {items.map((item, idx) => (
+        {items.map((item) => (
           <MatrixItem
-            key={idx}
+            key={item.id}
             item={item}
             quadrant={quadrant}
             onDragStart={onDragStart}

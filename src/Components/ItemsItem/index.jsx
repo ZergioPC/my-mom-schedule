@@ -5,13 +5,17 @@ function ItemsItem({ id, text, onDelete, onEdit}){
   const [value, setValue] = React.useState(text);
   const [isEditable, setIsEditable] = React.useState(text.length === 0);
 
+  React.useEffect(() => {
+    setValue(text);
+  }, [text]);
+
   const handleSave = () => {
     onEdit(id, value);
     setIsEditable(false);
   };
 
   return (
-    <div className="ItemsItem">
+    <li className="ItemsItem">
       {isEditable ? (
         <div className="ItemsItem-edit">
           <input
@@ -25,12 +29,19 @@ function ItemsItem({ id, text, onDelete, onEdit}){
         <div className="ItemsItem-idle">
           <p>{text}</p>
           <div className="ItemsItem-actions">
-            <button onClick={() => setIsEditable(true)}>✏️</button>
-            <button className="red-btn" onClick={() => onDelete(id)}>🗑️</button>
+            <button
+              aria-label="Editar tarea"
+              onClick={() => setIsEditable(true)}
+            >✏️</button>
+            <button
+              className="red-btn"
+              aria-label="Eliminar tarea"
+              onClick={() => onDelete(id)}
+            >🗑️</button>
           </div>
         </div>
       )}
-    </div>
+    </li>
   );
 }
 

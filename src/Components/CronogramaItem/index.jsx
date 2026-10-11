@@ -1,5 +1,6 @@
 import React from "react";
 import "./CronogramaItem.css";
+import { dayTypes, matrizTypes } from "../../Hooks/useManageData";
 
 function CronogramaItem({ item, counter, onEdit }){
   const [isEditing, setIsEditing] = React.useState(false);
@@ -43,7 +44,7 @@ function CronogramaItem({ item, counter, onEdit }){
           <ul>
             {isEditing ? (
               editedItem.tareas.map((tarea, idx) =>
-                <li key={idx}>
+                <li key={tarea.id ?? idx}>
                   <input 
                     type="text"
                     value={editedItem.tareas[idx].txt}
@@ -56,6 +57,7 @@ function CronogramaItem({ item, counter, onEdit }){
                   />
                   <button
                     className="red-btn"
+                    aria-label="Eliminar objetivo"
                     onClick={()=> setEditedItem({
                       ...editedItem,
                       tareas: editedItem.tareas.filter((prev, i)=>
@@ -67,7 +69,7 @@ function CronogramaItem({ item, counter, onEdit }){
               )
             ) : (
               item.tareas.map((tarea, idx) =>
-                <li key={idx} className={tarea.complete ? "item-Complete" : ""}>
+                <li key={tarea.id ?? idx} className={tarea.complete ? "item-Complete" : ""}>
                   <input 
                     type="checkbox"
                     checked={tarea.complete ?? false}
@@ -92,7 +94,15 @@ function CronogramaItem({ item, counter, onEdit }){
                   ...editedItem, 
                   tareas:[
                     ...editedItem.tareas,
-                    {txt: "", complete: false},
+                    {
+                      id: editedItem.tareas.reduce(
+                        (max, t) => Math.max(max, t.id ?? 0), 0
+                      ) + 1,
+                      txt: "",
+                      complete: false,
+                      day: dayTypes.none,
+                      matriz: matrizTypes.none,
+                    },
                   ]
                 }
               )}

@@ -43,9 +43,9 @@ function PlanSemanal(){
           >
             {tareas.filter(item =>
               item.day === dayTypes.none
-            ).map((item,idx) => (
+            ).map((item) => (
               <SemanaItem
-                key={idx}
+                key={item.id}
                 id={item.id}
                 text={item.txt}
               />
@@ -74,9 +74,9 @@ function PlanSemanal(){
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.morning
-                ).map((item,idx)=>(
+                ).map((item)=>(
                   <SemanaItem 
-                    key={idx}
+                    key={item.id}
                     id={item.id}
                     text={item.txt}
                     complete={item.complete}
@@ -94,9 +94,9 @@ function PlanSemanal(){
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.midday
-                ).map((item,idx)=>(
+                ).map((item)=>(
                   <SemanaItem 
-                    key={idx}
+                    key={item.id}
                     id={item.id}
                     text={item.txt}
                     complete={item.complete}
@@ -114,9 +114,9 @@ function PlanSemanal(){
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.afternoon
-                ).map((item,idx)=>(
+                ).map((item)=>(
                   <SemanaItem 
-                    key={idx}
+                    key={item.id}
                     id={item.id}
                     text={item.txt}
                     complete={item.complete}
@@ -134,9 +134,9 @@ function PlanSemanal(){
               >
                 {tareas.filter(item => 
                   item.day === day.value && item.time === timeTypes.night
-                ).map((item,idx)=>(
+                ).map((item)=>(
                   <SemanaItem 
-                    key={idx}
+                    key={item.id}
                     id={item.id}
                     text={item.txt}
                     complete={item.complete}
